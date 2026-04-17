@@ -274,6 +274,79 @@
     }
     .btn-outline:hover { background: #f5c842; color: #5c3d1e; transform: translateY(-2px); }
 
+    /* ── INSTAGRAM COLLAGE ── */
+    .insta-section {
+      margin-bottom: 56px;
+    }
+    .insta-section .section-heading {
+      margin-bottom: 28px;
+    }
+    .insta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .insta-collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .insta-card {
+      background: #1a1a1a;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .insta-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.30);
+    }
+    .insta-card img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+    .insta-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+      padding: 20px 16px 14px;
+      border-radius: 0 0 18px 18px;
+    }
+    .insta-overlay .insta-name {
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .insta-overlay .insta-handle {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem;
+    }
+    .insta-caption {
+      padding: 14px 16px;
+      color: #d0d0d0;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      background: #1a1a1a;
+      border-radius: 0 0 18px 18px;
+    }
+    .insta-caption strong {
+      color: #fff;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #3a2a1a;
@@ -423,6 +496,41 @@
       </div>
 
     </div>
+
+    <!-- INSTAGRAM COLLAGE -->
+    <section class="insta-section">
+      <div class="section-heading">
+        <h2>Real Customers, Real Reactions</h2>
+        <p>Don't just take our word for it — here's what our community is sharing.</p>
+        <div class="divider"></div>
+      </div>
+      <div style="text-align:center; margin-bottom: 20px;">
+        <span class="insta-badge">&#x2764; From Our Community</span>
+      </div>
+      <div class="insta-collage">
+
+        <!-- Screenshot 1: Crystal Mendoza-Lopez Facebook post -->
+        <div class="insta-card">
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/byrRMrdnRwtIseqM.jpeg"
+               alt="Crystal Mendoza-Lopez recommending Saira's food on Facebook"
+               loading="lazy" />
+          <div class="insta-caption">
+            <strong>Crystal Mendoza-Lopez</strong> &mdash; "Y'all, you should def try Saira's food! It's amazing. Had it for dinner last night and we had enough lunch for today."
+          </div>
+        </div>
+
+        <!-- Screenshot 2: Customer text message feedback -->
+        <div class="insta-card">
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/ZZSRDwvofIDsDbFo.jpeg"
+               alt="Customer text message praising Saira's food"
+               loading="lazy" />
+          <div class="insta-caption">
+            <strong>Happy Customer</strong> &mdash; "Food was great overall taste wise. Portions were a little big when it came to the rice, but overall we were happy with meal!"
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- CTA -->
     <div class="cta-section">
