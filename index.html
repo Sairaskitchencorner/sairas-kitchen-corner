@@ -13,6 +13,219 @@
     <script type="module" crossorigin src="/assets/index-Bj1Y_nhH.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-ChxOsE3Z.css">
     <script src="/__manus__/debug-collector.js" defer></script>
+  
+
+  
+<style id="mobile-optimizations">
+/* ===== SAIRA'S KITCHEN CORNER — MOBILE OPTIMIZATIONS ===== */
+
+/* ── Base mobile resets ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; width: 100%; }
+#root { overflow-x: hidden; }
+
+/* ── Prevent iOS input zoom ── */
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="number"], textarea, select {
+  font-size: 16px !important;
+}
+
+/* ── Navbar improvements ── */
+@media (max-width: 767px) {
+  /* Ensure sticky navbar works */
+  nav.sticky { position: sticky !important; top: 0 !important; z-index: 50 !important; }
+
+  /* Hamburger button: larger touch target */
+  nav button[aria-label="Toggle menu"] {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 10px !important;
+  }
+
+  /* Mobile dropdown: larger touch targets */
+  nav > div > div a,
+  nav > div > div button {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    min-height: 48px !important;
+    font-size: 15px !important;
+  }
+
+  /* Navbar logo: tighter on mobile */
+  nav .flex.items-center.gap-2.shrink-0 img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* ── Hero section ── */
+@media (max-width: 767px) {
+  /* Reduce hero padding */
+  section.relative.overflow-hidden.pt-10.pb-10 {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* Hero heading */
+  section.relative h1.font-serif {
+    font-size: clamp(24px, 7vw, 38px) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Hero subtitle */
+  section.relative p.text-amber-200 {
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Hero description */
+  section.relative p.text-amber-100\/90 {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Hero logo: smaller on mobile */
+  section.relative .w-36 { width: 90px !important; height: 90px !important; }
+  section.relative .sm\:w-44 { width: 90px !important; height: 90px !important; }
+  section.relative .md\:w-60 { width: 90px !important; height: 90px !important; }
+
+  /* Hero buttons: full width, good touch targets */
+  .flex.flex-col.sm\:flex-row.flex-wrap.gap-3 {
+    gap: 10px !important;
+  }
+  .flex.flex-col.sm\:flex-row.flex-wrap.gap-3 > a,
+  .flex.flex-col.sm\:flex-row.flex-wrap.gap-3 > button {
+    width: 100% !important;
+  }
+  .flex.flex-col.sm\:flex-row.flex-wrap.gap-3 button {
+    min-height: 48px !important;
+    font-size: 15px !important;
+    width: 100% !important;
+  }
+}
+
+/* ── Cuisine cards: 2-col on mobile ── */
+@media (max-width: 767px) {
+  .grid.grid-cols-2.sm\:grid-cols-3.lg\:grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+/* ── Why Choose section: 2-col on mobile ── */
+@media (max-width: 767px) {
+  .grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+/* ── Pricing CTA buttons ── */
+@media (max-width: 767px) {
+  .flex.flex-col.sm\:flex-row.gap-3 button,
+  .flex.flex-col.sm\:flex-row.gap-3 a {
+    width: 100% !important;
+    min-height: 48px !important;
+  }
+}
+
+/* ── Footer ── */
+@media (max-width: 767px) {
+  footer .grid.grid-cols-1.md\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  footer .mt-10.pt-6 {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+}
+
+/* ── Contact info bar ── */
+@media (max-width: 640px) {
+  .flex.flex-wrap.justify-center.gap-x-6.gap-y-2 {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+}
+
+/* ── Menu pages ── */
+@media (max-width: 767px) {
+  .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .py-14.md\:py-20 {
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+  }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ── All menus page ── */
+@media (max-width: 767px) {
+  .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3.gap-5 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .rounded-2xl.p-6 { padding: 14px 12px !important; }
+}
+
+/* ── Catering page ── */
+@media (max-width: 767px) {
+  .grid.grid-cols-1.md\:grid-cols-2,
+  .grid.grid-cols-1.md\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Order page ── */
+@media (max-width: 767px) {
+  .grid.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+  form button[type="submit"] {
+    width: 100% !important;
+    min-height: 52px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* ── Section headings ── */
+@media (max-width: 767px) {
+  h2.font-serif { font-size: clamp(20px, 6vw, 30px) !important; }
+  h3.font-serif { font-size: clamp(17px, 5vw, 22px) !important; }
+}
+
+/* ── Container padding ── */
+@media (max-width: 640px) {
+  .container { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
+/* ── Allergen notice ── */
+@media (max-width: 767px) {
+  div[style*="background-color: rgb(220, 38, 38)"],
+  div[style*="background-color:#dc2626"],
+  div[style*="background: #dc2626"] {
+    font-size: 13px !important;
+    padding: 10px 14px !important;
+  }
+}
+
+/* ── General touch targets ── */
+@media (max-width: 767px) {
+  a, button { min-height: 36px; }
+  nav a, nav button { min-height: 44px !important; }
+}
+</style>
+
   </head>
 
   <body>
