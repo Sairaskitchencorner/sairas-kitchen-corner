@@ -19,8 +19,8 @@
 
     /* ── NAV ── */
     nav {
-      background: #5c3d1e;
-      padding: 0 32px;
+      background: oklch(0.28 0.06 52);
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -28,48 +28,108 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
     .nav-brand {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
     }
     .nav-brand .brand-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #f5c842;
+      color: oklch(0.88 0.12 78);
       line-height: 1.2;
     }
     .nav-brand .brand-tagline {
-      font-size: 0.7rem;
-      color: #f5dfa0;
+      font-size: 0.68rem;
+      color: oklch(0.82 0.08 75);
       font-style: italic;
     }
+    /* Desktop nav links */
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       align-items: center;
       list-style: none;
     }
     .nav-links a {
-      color: #f5dfa0;
+      color: oklch(0.44 0.04 67);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
     }
-    .nav-links a:hover { background: rgba(245,200,66,0.15); color: #f5c842; }
-    .nav-links a.active { background: #f5c842; color: #5c3d1e; }
+    .nav-links a:hover {
+      background: oklch(0.96 0.03 78);
+      color: oklch(0.38 0.07 55);
+    }
+    .nav-links a.active {
+      background: oklch(0.52 0.11 58);
+      color: #fff;
+    }
     .nav-links a.order-btn {
-      background: #f5c842;
-      color: #5c3d1e;
-      border: 2px solid #f5c842;
+      color: oklch(0.44 0.04 67);
+      background: transparent;
     }
-    .nav-links a.order-btn:hover { background: #e0b030; border-color: #e0b030; }
+    .nav-links a.order-btn:hover {
+      background: oklch(0.96 0.03 78);
+      color: oklch(0.38 0.07 55);
+    }
+    /* Hamburger button */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      color: oklch(0.44 0.04 67);
+      transition: background 0.15s;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-hamburger:hover { background: oklch(0.96 0.03 78 / 0.15); }
+    .nav-hamburger svg { width: 24px; height: 24px; }
+    /* Mobile dropdown */
+    .nav-mobile {
+      display: none;
+      background: #fff;
+      border-top: 1px solid oklch(0.90 0.05 75);
+      padding: 8px 16px 16px;
+    }
+    .nav-mobile.open { display: block; }
+    .nav-mobile a {
+      display: flex;
+      align-items: center;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: oklch(0.35 0.04 60);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      min-height: 44px;
+    }
+    .nav-mobile a:hover {
+      background: oklch(0.96 0.03 78);
+      color: oklch(0.38 0.07 55);
+    }
+    .nav-mobile a.active {
+      background: oklch(0.52 0.11 58);
+      color: #fff;
+    }
 
     /* ── HERO BANNER ── */
     .hero {
@@ -355,35 +415,53 @@
       padding: 28px 24px;
       font-size: 0.88rem;
     }
-    footer a { color: #f5c842; text-decoration: none; }
+    footer a { color: oklch(0.82 0.12 78); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding: 36px 16px 32px; }
+      main { padding: 28px 16px 48px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 640px) {
       nav { padding: 0 16px; }
-      .nav-links { gap: 4px; }
-      .nav-links a { font-size: 0.8rem; padding: 5px 10px; }
-      .hero { padding: 40px 16px 36px; }
-      main { padding: 32px 16px 48px; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAVIGATION -->
-  <nav>
+  <nav id="main-nav">
     <a href="/" class="nav-brand">
-      <span class="brand-name">Saira's Kitchen Corner</span>
-      <span class="brand-tagline">Where Every Meal is Made with Love ❤️</span>
+      <div class="nav-brand-text">
+        <span class="brand-name">Saira's Kitchen Corner</span>
+        <span class="brand-tagline">Where Every Meal is Made with Love ❤️</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/#menu">Menu</a></li>
       <li><a href="/#catering">Catering</a></li>
       <li><a href="/testimonials.html" class="active">Testimonials</a></li>
-      <li><a href="/#order" class="order-btn">Order Now</a></li>
+      <li><a href="/order" class="order-btn">Order Now</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('nav-mobile').classList.toggle('open');">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
   </nav>
+  <!-- MOBILE DROPDOWN -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/">🏠 Home</a>
+    <a href="/#menu">📋 Menu</a>
+    <a href="/#catering">🎉 Catering</a>
+    <a href="/testimonials.html" class="active">⭐ Testimonials</a>
+    <a href="/order">🛒 Order Now</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
