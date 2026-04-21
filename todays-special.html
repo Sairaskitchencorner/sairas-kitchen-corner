@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Today's Special – Saira's Kitchen Corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #fdf6ec;
+      color: #3a2a1a;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: oklch(0.28 0.06 52);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-brand-text { display: flex; flex-direction: column; }
+    .nav-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: oklch(0.88 0.12 78);
+      line-height: 1.2;
+    }
+    .nav-brand .brand-tagline {
+      font-size: 0.68rem;
+      color: oklch(0.82 0.08 75);
+      font-style: italic;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      color: oklch(0.44 0.04 67);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover { background: oklch(0.96 0.03 78); color: oklch(0.38 0.07 55); }
+    .nav-links a.active { background: oklch(0.52 0.11 58); color: #fff; }
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      color: oklch(0.44 0.04 67);
+      transition: background 0.15s;
+      min-width: 44px; min-height: 44px;
+      align-items: center; justify-content: center;
+    }
+    .nav-hamburger:hover { background: oklch(0.96 0.03 78 / 0.15); }
+    .nav-hamburger svg { width: 24px; height: 24px; }
+    .nav-mobile {
+      display: none;
+      background: #fff;
+      border-top: 1px solid oklch(0.90 0.05 75);
+      padding: 8px 16px 16px;
+    }
+    .nav-mobile.open { display: block; }
+    .nav-mobile a {
+      display: flex;
+      align-items: center;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: oklch(0.35 0.04 60);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      min-height: 44px;
+    }
+    .nav-mobile a:hover { background: oklch(0.96 0.03 78); color: oklch(0.38 0.07 55); }
+    .nav-mobile a.active { background: oklch(0.52 0.11 58); color: #fff; }
+
+    /* ── URGENCY BANNER ── */
+    .urgency-banner {
+      background: linear-gradient(90deg, #b91c1c, #dc2626);
+      color: #fff;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .urgency-banner .pulse {
+      display: inline-block;
+      width: 10px; height: 10px;
+      background: #fef08a;
+      border-radius: 50%;
+      animation: pulse 1.4s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #5c3d1e 0%, #7a4f28 50%, #9b6535 100%);
+      padding: 56px 24px 48px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,200,66,0.18);
+      border: 1px solid rgba(245,200,66,0.5);
+      color: #f5c842;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 700;
+      color: #f5c842;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .hero h1 span {
+      display: block;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: #f5dfa0;
+      font-style: italic;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #f5dfa0;
+      max-width: 560px;
+      margin: 16px auto 0;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+
+    /* ── DISH CARD ── */
+    .dish-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(92,61,30,0.13);
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+    .dish-card-header {
+      background: linear-gradient(135deg, #5c3d1e, #7a4f28);
+      padding: 28px 32px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .dish-card-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #f5c842;
+      line-height: 1.2;
+    }
+    .dish-card-header h2 span {
+      display: block;
+      font-size: 1rem;
+      color: #f5dfa0;
+      font-style: italic;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .price-badge {
+      background: #f5c842;
+      color: #3a2a1a;
+      font-size: 1.5rem;
+      font-weight: 900;
+      padding: 10px 22px;
+      border-radius: 12px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .dish-card-body {
+      padding: 32px;
+    }
+
+    /* ── INCLUDES LIST ── */
+    .includes-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9b6535;
+      margin-bottom: 14px;
+    }
+    .includes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1.05rem;
+      color: #3a2a1a;
+      line-height: 1.5;
+    }
+    .includes-list li .icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .includes-list li strong {
+      font-weight: 700;
+      color: #5c3d1e;
+    }
+    .includes-list li p {
+      font-size: 0.88rem;
+      color: #7a5a3a;
+      margin-top: 2px;
+    }
+
+    /* ── DIVIDER ── */
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e8c97a, transparent);
+      margin: 24px 0;
+    }
+
+    /* ── SERVES INFO ── */
+    .serves-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fdf6ec;
+      border: 1px solid #e8c97a;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      color: #5c3d1e;
+      font-weight: 600;
+    }
+    .serves-row .serves-icon { font-size: 1.3rem; }
+
+    /* ── DEADLINE BOX ── */
+    .deadline-box {
+      background: #fff8e1;
+      border: 2px solid #f5c842;
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 32px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .deadline-box .deadline-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .deadline-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #5c3d1e;
+      margin-bottom: 6px;
+    }
+    .deadline-box p {
+      font-size: 0.95rem;
+      color: #7a5a3a;
+      line-height: 1.6;
+    }
+    .deadline-box strong { color: #b45309; }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: #7a5a3a;
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #25d366, #1da851);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,211,102,0.45); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #5c3d1e;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: 2px solid #9b6535;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { background: #5c3d1e; color: #f5c842; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: oklch(0.28 0.06 52);
+      color: oklch(0.75 0.06 70);
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 0.85rem;
+    }
+    footer a { color: oklch(0.82 0.10 75); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: inline-flex; }
+      .dish-card-header { flex-direction: column; align-items: flex-start; }
+      .price-badge { font-size: 1.25rem; }
+      .dish-card-body { padding: 22px 20px; }
+      .deadline-box { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="main-nav">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-text">
+        <span class="brand-name">Saira's Kitchen Corner</span>
+        <span class="brand-tagline">Where Every Meal is Made with Love ❤️</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#menu">Menu</a></li>
+      <li><a href="/#catering">Catering</a></li>
+      <li><a href="/testimonials.html">Testimonials</a></li>
+      <li><a href="/todays-special.html" class="active">Today's Special</a></li>
+      <li><a href="/order" class="order-btn">Order Now</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle menu"
+      onclick="document.getElementById('nav-mobile').classList.toggle('open');">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+  <!-- MOBILE DROPDOWN -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/">🏠 Home</a>
+    <a href="/#menu">📋 Menu</a>
+    <a href="/#catering">🎉 Catering</a>
+    <a href="/testimonials.html">⭐ Testimonials</a>
+    <a href="/todays-special.html" class="active">🍽️ Today's Special</a>
+    <a href="/order">🛒 Order Now</a>
+  </div>
+
+  <!-- URGENCY BANNER -->
+  <div class="urgency-banner">
+    <span class="pulse"></span>
+    🔥 Only 3 spots left for today — order before 12:00 PM MST!
+    <span class="pulse"></span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Today's Special · Limited Availability</div>
+    <h1>
+      Butter Chicken
+      <span>Chicken Makhani</span>
+    </h1>
+    <p class="hero-sub">Rich, creamy, slow-cooked to perfection — served with warm naans and fluffy rice. A true taste of home.</p>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- DISH CARD -->
+    <div class="dish-card">
+      <div class="dish-card-header">
+        <h2>
+          Butter Chicken
+          <span>/ Chicken Makhani</span>
+        </h2>
+        <div class="price-badge">$30 / Meal</div>
+      </div>
+      <div class="dish-card-body">
+
+        <div class="includes-label">What's Included</div>
+        <ul class="includes-list">
+          <li>
+            <span class="icon">🍛</span>
+            <div>
+              <strong>Butter Chicken / Chicken Makhani</strong>
+              <p>Tender chicken simmered in a velvety tomato-cream sauce with aromatic spices — rich, comforting, and made fresh today.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon">🫓</span>
+            <div>
+              <strong>2 Freshly Made Naans</strong>
+              <p>Soft, pillowy naans baked fresh — perfect for scooping up every last drop of that gorgeous sauce.</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon">🍚</span>
+            <div>
+              <strong>Serving of Rice</strong>
+              <p>Fluffy, perfectly cooked basmati rice to round out the meal.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="card-divider"></div>
+
+        <div class="serves-row">
+          <span class="serves-icon">👨‍👩‍👧</span>
+          <span>Generous portions — serves 2 people &nbsp;·&nbsp; <strong>$30 per meal</strong></span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DEADLINE BOX -->
+    <div class="deadline-box">
+      <div class="deadline-icon">⏰</div>
+      <div>
+        <h3>Confirm Your Order Before 12:00 PM MST</h3>
+        <p>I have room for <strong>3 more orders today</strong>. Please confirm your order details — name, pickup or delivery, and any dietary notes — before <strong>12:00 PM MST</strong> to secure your spot.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <p>Ready to order? Reach out via WhatsApp or text — I'll confirm your spot right away!</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/19723135581?text=Hi%20Saira!%20I%27d%20like%20to%20order%20today%27s%20special%20%E2%80%94%20Butter%20Chicken%20with%20Naans%20and%20Rice." class="btn-primary">
+          💬 Order via WhatsApp
+        </a>
+        <a href="/#menu" class="btn-outline">
+          📋 View Full Menu
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Saira's Kitchen Corner &nbsp;|&nbsp; Monument, CO &nbsp;|&nbsp;
+      <a href="tel:+19723135581">972-313-5581</a> &nbsp;|&nbsp;
+      <a href="mailto:sairaskitchencorner2@gmail.com">sairaskitchencorner2@gmail.com</a>
+    </p>
+  </footer>
+
+</body>
+</html>
