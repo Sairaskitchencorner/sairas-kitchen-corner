@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Frozen Items – Saira's Kitchen Corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #fdf6ec;
+      color: #3a2a1a;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: oklch(0.28 0.06 52);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-brand-text { display: flex; flex-direction: column; }
+    .nav-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: oklch(0.88 0.12 78);
+      line-height: 1.2;
+    }
+    .nav-brand .brand-tagline {
+      font-size: 0.68rem;
+      color: oklch(0.82 0.08 75);
+      font-style: italic;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      color: oklch(0.44 0.04 67);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover {
+      background: oklch(0.96 0.03 78);
+      color: oklch(0.38 0.07 55);
+    }
+    .nav-links a.active {
+      background: oklch(0.52 0.11 58);
+      color: #fff;
+    }
+    .nav-links a.order-btn {
+      color: oklch(0.44 0.04 67);
+      background: transparent;
+    }
+    .nav-links a.order-btn:hover {
+      background: oklch(0.96 0.03 78);
+      color: oklch(0.38 0.07 55);
+    }
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      color: oklch(0.44 0.04 67);
+      transition: background 0.15s;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-hamburger svg { width: 26px; height: 26px; }
+    .nav-hamburger:hover { background: oklch(0.38 0.06 52); }
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      background: oklch(0.24 0.05 52);
+      padding: 8px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: oklch(0.82 0.08 75);
+      text-decoration: none;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    .nav-mobile a:hover, .nav-mobile a.active { background: oklch(0.32 0.07 52); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #3a2a1a 0%, #7c4a1e 50%, #5c3d1e 100%);
+      color: #fff;
+      text-align: center;
+      padding: 52px 24px 44px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.2);
+      border: 1px solid rgba(212,175,55,0.5);
+      color: #f5c842;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #f5c842;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 20px;
+      line-height: 1.65;
+    }
+    .pack-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245,200,66,0.15);
+      border: 2px solid #f5c842;
+      border-radius: 12px;
+      padding: 10px 24px;
+      color: #f5c842;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ── CATEGORY SECTION ── */
+    .category {
+      margin-bottom: 48px;
+    }
+    .category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #5c3d1e;
+      border-left: 5px solid #d4af37;
+      padding-left: 14px;
+      margin-bottom: 20px;
+    }
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .item-card {
+      background: #fff;
+      border: 1px solid #e8d5b0;
+      border-radius: 14px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(92,61,30,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(92,61,30,0.16);
+    }
+    .item-icon {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+    .item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #3a2a1a;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .item-pack {
+      font-size: 0.8rem;
+      color: #9a6535;
+      background: #fdf0d5;
+      border: 1px solid #e8d5b0;
+      border-radius: 20px;
+      padding: 3px 12px;
+      margin-top: 4px;
+    }
+
+    /* ── PACK INFO BOX ── */
+    .pack-info {
+      background: linear-gradient(135deg, #3a2a1a, #5c3d1e);
+      border-radius: 16px;
+      padding: 28px 32px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .pack-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #f5c842;
+      margin-bottom: 10px;
+    }
+    .pack-info p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .pack-sizes {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .pack-size-badge {
+      background: rgba(245,200,66,0.2);
+      border: 2px solid #f5c842;
+      color: #f5c842;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 10px 24px;
+      border-radius: 12px;
+      min-width: 80px;
+    }
+
+    /* ── ALLERGEN ── */
+    .allergen-box {
+      background: #fee2e2;
+      border: 2px solid #f87171;
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .allergen-box .allergen-title {
+      font-weight: 700;
+      color: #b91c1c;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+    .allergen-box p {
+      color: #7f1d1d;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #3a2a1a, #7c4a1e);
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      color: #fff;
+      margin-top: 16px;
+    }
+    .cta-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #f5c842;
+      margin-bottom: 10px;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #d4af37;
+      color: #3a2a1a;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #f5c842; }
+    .btn-outline {
+      border: 2px solid rgba(212,175,55,0.6);
+      color: #f5c842;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: rgba(212,175,55,0.15); }
+
+    /* ── QR SECTION ── */
+    .qr-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin: 32px 0 8px;
+    }
+    .qr-block { text-align: center; }
+    .qr-block img {
+      width: 110px;
+      height: 110px;
+      border: 3px solid #fff;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .qr-block .qr-label {
+      color: #f5c842;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+    .qr-block .qr-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #3a2a1a;
+      color: #c8a87a;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.88rem;
+    }
+    footer a { color: oklch(0.82 0.12 78); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding: 36px 16px 32px; }
+      main { padding: 28px 16px 48px; }
+      .items-grid { grid-template-columns: repeat(2, 1fr); }
+      .pack-info { padding: 20px 16px; }
+    }
+    @media (max-width: 480px) {
+      .items-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="main-nav">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-text">
+        <span class="brand-name">Saira's Kitchen Corner</span>
+        <span class="brand-tagline">Where Every Meal is Made with Love ❤️</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#menu">Menu</a></li>
+      <li><a href="/frozen-items.html" class="active">❄️ Frozen Items</a></li>
+      <li><a href="/#catering">Catering</a></li>
+      <li><a href="/testimonials.html">Testimonials</a></li>
+      <li><a href="/order" class="order-btn">Order Now</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('nav-mobile').classList.toggle('open');">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+  <!-- MOBILE DROPDOWN -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/">🏠 Home</a>
+    <a href="/#menu">📋 Menu</a>
+    <a href="/frozen-items.html" class="active">❄️ Frozen Items</a>
+    <a href="/#catering">🎉 Catering</a>
+    <a href="/testimonials.html">⭐ Testimonials</a>
+    <a href="/order">🛒 Order Now</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">❄️ Now Available</div>
+    <h1>Frozen Items</h1>
+    <p>Stock your freezer with Saira's homemade frozen snacks and appetizers — ready to fry or bake whenever you need them. Made fresh, frozen with love.</p>
+    <div class="pack-banner">
+      📦 Available in Packs of &nbsp;<strong>6</strong>&nbsp;·&nbsp;<strong>8</strong>&nbsp;·&nbsp;<strong>12</strong>&nbsp; pieces
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- PACK INFO -->
+    <div class="pack-info">
+      <h2>Choose Your Pack Size</h2>
+      <p>All frozen items are available in three convenient pack sizes. Perfect for families, gatherings, or keeping a stash for busy weeknights. Order via WhatsApp or text and we'll prepare your pack fresh before freezing.</p>
+      <div class="pack-sizes">
+        <div class="pack-size-badge">6 pcs</div>
+        <div class="pack-size-badge">8 pcs</div>
+        <div class="pack-size-badge">12 pcs</div>
+      </div>
+    </div>
+
+    <!-- SPRING ROLLS -->
+    <div class="category">
+      <div class="category-title">🥢 Spring Rolls</div>
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-icon">🍗</div>
+          <div class="item-name">Chicken Spring Rolls</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🥦</div>
+          <div class="item-name">Vegetable Spring Rolls</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAMOSAS -->
+    <div class="category">
+      <div class="category-title">🔺 Samosas</div>
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-icon">🍗</div>
+          <div class="item-name">Chicken Samosas</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🥩</div>
+          <div class="item-name">Beef Samosas</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🥔</div>
+          <div class="item-name">Aaloo Samosas</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KACHORIS -->
+    <div class="category">
+      <div class="category-title">🫓 Kachoris</div>
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-icon">🥩</div>
+          <div class="item-name">Beef Kachori</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🍗</div>
+          <div class="item-name">Chicken Kachori</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🌿</div>
+          <div class="item-name">Daal Kachori</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KABABS & TIKKI -->
+    <div class="category">
+      <div class="category-title">🍢 Kababs & Tikki</div>
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-icon">🥩</div>
+          <div class="item-name">Beef Shami Kabab</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🍗</div>
+          <div class="item-name">Chicken Shami Kabab</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+        <div class="item-card">
+          <div class="item-icon">🥔</div>
+          <div class="item-name">Aaloo Tikki</div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARINATED CHICKEN -->
+    <div class="category">
+      <div class="category-title">🔥 Marinated &amp; Ready to Cook</div>
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-icon">🍢</div>
+          <div class="item-name">Marinated Chicken Tikka <span style="font-size:0.8rem;font-weight:400;color:#9a6535;">(Uncooked)</span></div>
+          <div class="item-pack">Packs of 6 · 8 · 12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALLERGEN -->
+    <div class="allergen-box">
+      <div class="allergen-title">⚠️ Allergen Notice</div>
+      <p>Our meals may contain nuts, dairy (milk, yogurt), gluten, eggs, and other common allergens. Please inform us of any food allergies at the time of placing your order. Saira's Kitchen Corner is not responsible for any allergic reactions if not informed of allergies prior to placing the order.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>Ready to Stock Your Freezer?</h3>
+      <p>Order your frozen packs via WhatsApp or text. We'll prepare them fresh and have them ready for pickup.</p>
+      <div class="qr-section">
+        <div class="qr-block">
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/OhuLxekGoacUNAgj.png" alt="Website QR Code" />
+          <div class="qr-label">Our Website</div>
+          <div class="qr-sub">sairaskitchencorner.com</div>
+        </div>
+        <div class="qr-block">
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/KxJtwlGFPmjpkulf.png" alt="Instagram QR Code" />
+          <div class="qr-label">Instagram</div>
+          <div class="qr-sub">@sairaskitchencorner</div>
+        </div>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://wa.me/19723135581?text=Hi%20Saira!%20I'd%20like%20to%20order%20some%20frozen%20items." class="btn-primary">📱 Order via WhatsApp</a>
+        <a href="tel:+19723135581" class="btn-outline">📞 Call Us: 972-313-5581</a>
+        <a href="/" class="btn-outline">🏠 Home</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Saira's Kitchen Corner &nbsp;|&nbsp; Monument, CO &nbsp;|&nbsp;
+      <a href="tel:+19723135581">972-313-5581</a> &nbsp;|&nbsp;
+      <a href="mailto:sairaskitchencorner2@gmail.com">sairaskitchencorner2@gmail.com</a>
+    </p>
+  </footer>
+
+</body>
+</html>
