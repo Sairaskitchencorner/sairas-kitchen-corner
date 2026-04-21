@@ -116,6 +116,22 @@
     }
     .nav-mobile a:hover, .nav-mobile a.active { background: oklch(0.32 0.07 52); color: #fff; }
 
+    /* ── NOTICE BANNER ── */
+    .notice-banner {
+      background: linear-gradient(135deg, #7c4a1e, #5c3d1e);
+      color: #f5c842;
+      text-align: center;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border-bottom: 2px solid #d4af37;
+    }
+    .notice-banner span {
+      color: rgba(255,255,255,0.9);
+      font-weight: 400;
+    }
+
     /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, #3a2a1a 0%, #7c4a1e 50%, #5c3d1e 100%);
@@ -193,7 +209,7 @@
       background: #fff;
       border: 1px solid #e8d5b0;
       border-radius: 14px;
-      padding: 20px 18px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -205,16 +221,24 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 24px rgba(92,61,30,0.16);
     }
-    .item-icon {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
+    .item-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .item-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
     .item-name {
       font-family: 'Playfair Display', serif;
       font-size: 1.05rem;
       font-weight: 700;
       color: #3a2a1a;
-      margin-bottom: 6px;
       line-height: 1.3;
     }
     .item-pack {
@@ -224,7 +248,6 @@
       border: 1px solid #e8d5b0;
       border-radius: 20px;
       padding: 3px 12px;
-      margin-top: 4px;
     }
 
     /* ── PACK INFO BOX ── */
@@ -374,8 +397,7 @@
       .nav-hamburger { display: flex; }
       .hero { padding: 36px 16px 32px; }
       main { padding: 28px 16px 48px; }
-      .items-grid { grid-template-columns: repeat(2, 1fr); }
-      .pack-info { padding: 20px 16px; }
+      .items-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
     }
     @media (max-width: 480px) {
       .items-grid { grid-template-columns: 1fr 1fr; }
@@ -419,6 +441,11 @@
     <a href="/order">🛒 Order Now</a>
   </div>
 
+  <!-- NOTICE BANNER -->
+  <div class="notice-banner">
+    📅 7 Days Notice Preferred &nbsp;·&nbsp; <span>Please place your order at least 7 days in advance for a complete order</span>
+  </div>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-badge">❄️ Now Available</div>
@@ -435,7 +462,7 @@
     <!-- PACK INFO -->
     <div class="pack-info">
       <h2>Choose Your Pack Size</h2>
-      <p>All frozen items are available in three convenient pack sizes. Perfect for families, gatherings, or keeping a stash for busy weeknights. Order via WhatsApp or text and we'll prepare your pack fresh before freezing.</p>
+      <p>All frozen items are available in three convenient pack sizes. Perfect for families, gatherings, or keeping a stash for busy weeknights. Order via Text/WhatsApp and we'll prepare your pack fresh before freezing.</p>
       <div class="pack-sizes">
         <div class="pack-size-badge">6 pcs</div>
         <div class="pack-size-badge">8 pcs</div>
@@ -448,14 +475,18 @@
       <div class="category-title">🥢 Spring Rolls</div>
       <div class="items-grid">
         <div class="item-card">
-          <div class="item-icon">🍗</div>
-          <div class="item-name">Chicken Spring Rolls</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/GYMShyaJOjtlYXVd.png" alt="Chicken Spring Rolls" />
+          <div class="item-body">
+            <div class="item-name">Chicken Spring Rolls</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🥦</div>
-          <div class="item-name">Vegetable Spring Rolls</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/UkPfXrjDyezXaMzY.png" alt="Vegetable Spring Rolls" />
+          <div class="item-body">
+            <div class="item-name">Vegetable Spring Rolls</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
       </div>
     </div>
@@ -465,19 +496,25 @@
       <div class="category-title">🔺 Samosas</div>
       <div class="items-grid">
         <div class="item-card">
-          <div class="item-icon">🍗</div>
-          <div class="item-name">Chicken Samosas</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/VuNOWQDTCbsynNrT.png" alt="Chicken Samosas" />
+          <div class="item-body">
+            <div class="item-name">Chicken Samosas</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🥩</div>
-          <div class="item-name">Beef Samosas</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/gjRfdqWpCjONwlKH.png" alt="Beef Samosas" />
+          <div class="item-body">
+            <div class="item-name">Beef Samosas</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🥔</div>
-          <div class="item-name">Aaloo Samosas</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/jdFJtAECoCiNhnWw.png" alt="Aaloo Samosas" />
+          <div class="item-body">
+            <div class="item-name">Aaloo Samosas</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
       </div>
     </div>
@@ -487,41 +524,53 @@
       <div class="category-title">🫓 Kachoris</div>
       <div class="items-grid">
         <div class="item-card">
-          <div class="item-icon">🥩</div>
-          <div class="item-name">Beef Kachori</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/nNfXZiDAnTScRFcn.png" alt="Beef Kachori" />
+          <div class="item-body">
+            <div class="item-name">Beef Kachori</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🍗</div>
-          <div class="item-name">Chicken Kachori</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/geqXhyiUfNgbdxEa.png" alt="Chicken Kachori" />
+          <div class="item-body">
+            <div class="item-name">Chicken Kachori</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🌿</div>
-          <div class="item-name">Daal Kachori</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/RTfdmxBshSRBuUor.png" alt="Daal Kachori" />
+          <div class="item-body">
+            <div class="item-name">Daal Kachori</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- KABABS & TIKKI -->
     <div class="category">
-      <div class="category-title">🍢 Kababs & Tikki</div>
+      <div class="category-title">🍢 Kababs &amp; Tikki</div>
       <div class="items-grid">
         <div class="item-card">
-          <div class="item-icon">🥩</div>
-          <div class="item-name">Beef Shami Kabab</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/VMmyBvzrlSfmCvfM.png" alt="Beef Shami Kabab" />
+          <div class="item-body">
+            <div class="item-name">Beef Shami Kabab</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🍗</div>
-          <div class="item-name">Chicken Shami Kabab</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/xEjkXOIphJHtfErT.png" alt="Chicken Shami Kabab" />
+          <div class="item-body">
+            <div class="item-name">Chicken Shami Kabab</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
         <div class="item-card">
-          <div class="item-icon">🥔</div>
-          <div class="item-name">Aaloo Tikki</div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/XonvJOvURgGAyjgp.png" alt="Aaloo Tikki" />
+          <div class="item-body">
+            <div class="item-name">Aaloo Tikki</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
       </div>
     </div>
@@ -531,9 +580,32 @@
       <div class="category-title">🔥 Marinated &amp; Ready to Cook</div>
       <div class="items-grid">
         <div class="item-card">
-          <div class="item-icon">🍢</div>
-          <div class="item-name">Marinated Chicken Tikka <span style="font-size:0.8rem;font-weight:400;color:#9a6535;">(Uncooked)</span></div>
-          <div class="item-pack">Packs of 6 · 8 · 12</div>
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/NyRrQAPLZOqogGSi.png" alt="Marinated Chicken Tikka" />
+          <div class="item-body">
+            <div class="item-name">Marinated Chicken Tikka <span style="font-size:0.8rem;font-weight:400;color:#9a6535;">(Uncooked)</span></div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEEMA NAANS -->
+    <div class="category">
+      <div class="category-title">🫓 Keema Naans</div>
+      <div class="items-grid">
+        <div class="item-card">
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/TInDhwfyuKpeacDc.png" alt="Beef Keema Naan" />
+          <div class="item-body">
+            <div class="item-name">Beef Keema Naan</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img class="item-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/ZFawRkTghqkOFJRs.png" alt="Chicken Keema Naan" />
+          <div class="item-body">
+            <div class="item-name">Chicken Keema Naan</div>
+            <div class="item-pack">Packs of 6 · 8 · 12</div>
+          </div>
         </div>
       </div>
     </div>
@@ -547,7 +619,7 @@
     <!-- CTA -->
     <div class="cta-section">
       <h3>Ready to Stock Your Freezer?</h3>
-      <p>Order your frozen packs via WhatsApp or text. We'll prepare them fresh and have them ready for pickup.</p>
+      <p>Order your frozen packs via Text/WhatsApp. We'll prepare them fresh and have them ready for pickup.</p>
       <div class="qr-section">
         <div class="qr-block">
           <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663323870382/OhuLxekGoacUNAgj.png" alt="Website QR Code" />
@@ -561,7 +633,7 @@
         </div>
       </div>
       <div class="cta-buttons">
-        <a href="https://wa.me/19723135581?text=Hi%20Saira!%20I'd%20like%20to%20order%20some%20frozen%20items." class="btn-primary">📱 Order via WhatsApp</a>
+        <a href="https://wa.me/19723135581?text=Hi%20Saira!%20I'd%20like%20to%20order%20some%20frozen%20items." class="btn-primary">📱 Order via Text/WhatsApp</a>
         <a href="tel:+19723135581" class="btn-outline">📞 Call Us: 972-313-5581</a>
         <a href="/" class="btn-outline">🏠 Home</a>
       </div>
