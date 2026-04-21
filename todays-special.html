@@ -365,6 +365,36 @@
       transition: background 0.15s, color 0.15s;
     }
     .btn-outline:hover { background: #5c3d1e; color: #f5c842; }
+    .btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #5c3d1e, #7a4f28);
+      color: #f5c842;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(92,61,30,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-call:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(92,61,30,0.4); }
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #5c3d1e;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: 2px solid #5c3d1e;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-home:hover { background: #5c3d1e; color: #f5c842; }
 
     /* ── FOOTER ── */
     footer {
@@ -505,8 +535,11 @@
         <a href="https://wa.me/19723135581?text=Hi%20Saira!%20I%27d%20like%20to%20order%20today%27s%20special%20%E2%80%94%20Butter%20Chicken%20with%20Naans%20and%20Rice." class="btn-primary">
           💬 Order via WhatsApp
         </a>
-        <a href="/#menu" class="btn-outline">
-          📋 View Full Menu
+        <a href="tel:+19723135581" class="btn-call">
+          📞 Call Us
+        </a>
+        <a href="/" class="btn-home">
+          🏠 Home
         </a>
       </div>
     </div>
