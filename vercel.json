@@ -1,6 +1,8 @@
 {
   "rewrites": [
     { "source": "/todays-special", "destination": "/todays-special.html" },
+    { "source": "/frozen-items", "destination": "/frozen-items.html" },
+    { "source": "/testimonials", "destination": "/testimonials.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
