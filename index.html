@@ -4,83 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saira's Kitchen Corner</title>
-    <script>
-      // Pre-React interception
-      window.__menuRedirect = true;
-      
-      // Intercept fetch/XHR to prevent React navigation
-      const originalFetch = window.fetch;
-      window.fetch = function(...args) {
-        if (args[0] && args[0].includes('/menu')) {
-          window.location.href = '/weekly-menu.html';
-          return Promise.reject('Redirected to weekly menu');
-        }
-        return originalFetch.apply(this, args);
-      };
-    </script>
     <script type="module" crossorigin src="/assets/index-D9JOW-p7.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BtkhrQJs.css">
     <style>
       /* Hide Today's Special references */
       a[href*="special"], button:contains("Special"), div:contains("Special") { display: none !important; }
-      .deadline-banner {
-        background-color: #fef3c7;
-        color: #92400e;
-        padding: 1rem;
-        text-align: center;
-        font-weight: bold;
-        border-bottom: 1px solid #fde68a;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
     </style>
   </head>
   <body>
     <div id="root"></div>
     <script>
-      // Post-React interception with aggressive approach
-      const redirectToMenu = () => {
-        const menuLinks = Array.from(document.querySelectorAll('a')).filter(a => a.textContent.trim() === 'Menu');
-        menuLinks.forEach(link => {
-          link.href = '/weekly-menu.html';
-          link.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            window.location.href = '/weekly-menu.html';
-            return false;
-          };
-          // Remove all event listeners
-          const newLink = link.cloneNode(true);
-          newLink.onclick = (e) => {
-            e.preventDefault();
-            window.location.href = '/weekly-menu.html';
-            return false;
-          };
-          link.parentNode.replaceChild(newLink, link);
-        });
-      };
-      
-      // Try immediately
-      redirectToMenu();
-      
-      // Try after delays
-      setTimeout(redirectToMenu, 100);
-      setTimeout(redirectToMenu, 300);
-      setTimeout(redirectToMenu, 500);
-      setTimeout(redirectToMenu, 1000);
-      setTimeout(redirectToMenu, 2000);
-      setTimeout(redirectToMenu, 3000);
-      
-      // Monitor for changes
-      const observer = new MutationObserver(() => {
-        redirectToMenu();
-      });
-      observer.observe(document.body, { childList: true, subtree: true, attributes: true });
-      
-      // Intercept history changes
+      // Aggressive Menu button redirect using continuous monitoring
+      let menuInterceptor = setInterval(() => {
+        try {
+          // Find all elements with "Menu" text
+          const allElements = document.querySelectorAll('*');
+          allElements.forEach(el => {
+            // Check if this element contains "Menu" text and is clickable
+            if ((el.tagName === 'A' || el.tagName === 'BUTTON') && 
+                el.textContent.trim() === 'Menu' && 
+                el.offsetParent !== null) { // visible element
+              
+              // Replace with link
+              if (el.tagName === 'BUTTON') {
+                const newLink = document.createElement('a');
+                newLink.href = '/weekly-menu.html';
+                newLink.textContent = el.textContent;
+                newLink.className = el.className;
+                newLink.style.cssText = el.style.cssText;
+                el.parentNode.replaceChild(newLink, el);
+              } else if (el.tagName === 'A') {
+                // Ensure href is set correctly
+                el.href = '/weekly-menu.html';
+                el.onclick = null;
+              }
+            }
+          });
+        } catch (e) {
+          // Silently fail
+        }
+      }, 100);
+
+      // Also intercept any navigation attempts to /menu
       const originalPushState = history.pushState;
+      const originalReplaceState = history.replaceState;
+      
       history.pushState = function(state, title, url) {
         if (url && url.includes('/menu')) {
           window.location.href = '/weekly-menu.html';
@@ -88,6 +56,31 @@
         }
         return originalPushState.apply(history, arguments);
       };
+      
+      history.replaceState = function(state, title, url) {
+        if (url && url.includes('/menu')) {
+          window.location.href = '/weekly-menu.html';
+          return;
+        }
+        return originalReplaceState.apply(history, arguments);
+      };
+
+      // Intercept all link clicks
+      document.addEventListener('click', (e) => {
+        if ((e.target.tagName === 'A' || e.target.tagName === 'BUTTON') &&
+            e.target.textContent.trim() === 'Menu') {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          window.location.href = '/weekly-menu.html';
+          return false;
+        }
+      }, true);
+
+      // Stop the interceptor after 10 seconds to avoid performance issues
+      setTimeout(() => {
+        clearInterval(menuInterceptor);
+      }, 10000);
     </script>
   </body>
 </html>
