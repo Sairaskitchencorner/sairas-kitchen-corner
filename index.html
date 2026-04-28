@@ -6,47 +6,6 @@
     <title>Saira's Kitchen Corner</title>
     <script type="module" crossorigin src="/assets/index-D9JOW-p7.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BtkhrQJs.css">
-    <style>
-      /* Hide Today's Special elements using CSS */
-      .todays-special-btn, 
-      [class*="TodaysSpecial"],
-      a[href*="todays-special"],
-      div:has(> p:contains("Only 3 spots left")) {
-        display: none !important;
-      }
-    </style>
-    <script>
-      // Function to hide elements and add the deadline message
-      function applyCustomizations() {
-        // Hide elements by text content (for dynamic elements not caught by CSS)
-        document.querySelectorAll('button, a, div, span, p').forEach(el => {
-          const text = el.textContent;
-          if (text.includes("Today's Special") || text.includes("🔥") || text.includes("✨") || text.includes("Only 3 spots left")) {
-            el.style.display = 'none';
-          }
-        });
-
-        // Add deadline message to menu page
-        if (window.location.pathname.includes('/menu')) {
-          const header = document.querySelector('h1, h2');
-          if (header && !document.getElementById('deadline-msg')) {
-            const msg = document.createElement('div');
-            msg.id = 'deadline-msg';
-            msg.style.cssText = 'text-align:center;padding:15px;background-color:#fff3cd;color:#856404;font-weight:bold;margin-bottom:20px;border-radius:8px;border:1px solid #ffeeba;';
-            msg.textContent = "Missed your order deadline? Just text/call us and we will try our best to accommodate you😊";
-            header.parentNode.insertBefore(msg, header);
-          }
-        }
-      }
-
-      // Apply customizations when the DOM is ready and on subsequent page changes
-      document.addEventListener('DOMContentLoaded', applyCustomizations);
-      window.addEventListener('popstate', applyCustomizations); // For single-page app navigation
-      window.addEventListener('load', applyCustomizations); // Fallback for full page loads
-
-      // Also run periodically for dynamically loaded content
-      setInterval(applyCustomizations, 1000);
-    </script>
   </head>
   <body>
     <div id="root"></div>
