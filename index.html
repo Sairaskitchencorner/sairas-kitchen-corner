@@ -28,30 +28,41 @@
     </div>
     <div id="root"></div>
     <script>
-      // Wait for React to render, then replace Menu button with direct link
+      // Replace Menu button with a direct link
       const replaceMenuButton = () => {
         const buttons = document.querySelectorAll('button');
         buttons.forEach(btn => {
-          if (btn.textContent.trim() === 'Menu' && !btn.dataset.replaced) {
-            btn.dataset.replaced = 'true';
-            btn.onclick = (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              window.location.href = '/weekly-menu.html';
-              return false;
-            };
+          if (btn.textContent.trim() === 'Menu' && !btn.hasAttribute('data-menu-replaced')) {
+            btn.setAttribute('data-menu-replaced', 'true');
+            // Create a new link element
+            const link = document.createElement('a');
+            link.href = '/weekly-menu.html';
+            link.textContent = btn.textContent;
+            link.className = btn.className;
+            link.style.cssText = btn.style.cssText;
+            // Copy all attributes
+            Array.from(btn.attributes).forEach(attr => {
+              if (attr.name !== 'class' && attr.name !== 'style' && attr.name !== 'data-menu-replaced') {
+                link.setAttribute(attr.name, attr.value);
+              }
+            });
+            // Replace the button with the link
+            btn.parentNode.replaceChild(link, btn);
           }
         });
       };
       
-      // Try multiple times to catch the button after React renders
-      setTimeout(replaceMenuButton, 100);
+      // Try multiple times with increasing delays
+      setTimeout(replaceMenuButton, 50);
+      setTimeout(replaceMenuButton, 200);
       setTimeout(replaceMenuButton, 500);
       setTimeout(replaceMenuButton, 1000);
       setTimeout(replaceMenuButton, 2000);
       
       // Also monitor for DOM changes
-      const observer = new MutationObserver(replaceMenuButton);
+      const observer = new MutationObserver(() => {
+        replaceMenuButton();
+      });
       observer.observe(document.body, { childList: true, subtree: true });
       
       // Show deadline message only on menu page
