@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saira's Kitchen Corner</title>
+    <script>
+      // Pre-React interception
+      window.__menuRedirect = true;
+      
+      // Intercept fetch/XHR to prevent React navigation
+      const originalFetch = window.fetch;
+      window.fetch = function(...args) {
+        if (args[0] && args[0].includes('/menu')) {
+          window.location.href = '/weekly-menu.html';
+          return Promise.reject('Redirected to weekly menu');
+        }
+        return originalFetch.apply(this, args);
+      };
+    </script>
     <script type="module" crossorigin src="/assets/index-D9JOW-p7.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BtkhrQJs.css">
     <style>
@@ -23,65 +37,57 @@
     </style>
   </head>
   <body>
-    <div id="deadline-message" class="deadline-banner" style="display:none;">
-      Missed your order deadline? Just text/call us and we will try our best to accommodate you😊
-    </div>
     <div id="root"></div>
     <script>
-      // Intercept all link clicks globally
-      document.addEventListener('click', (e) => {
-        const target = e.target.closest('a');
-        if (target) {
-          const href = target.getAttribute('href');
-          if (href === '/weekly-menu.html') {
+      // Post-React interception with aggressive approach
+      const redirectToMenu = () => {
+        const menuLinks = Array.from(document.querySelectorAll('a')).filter(a => a.textContent.trim() === 'Menu');
+        menuLinks.forEach(link => {
+          link.href = '/weekly-menu.html';
+          link.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
+            e.stopImmediatePropagation();
             window.location.href = '/weekly-menu.html';
             return false;
-          }
-        }
-      }, true);
-      
-      // Also replace Menu link with direct navigation
-      const replaceMenuLink = () => {
-        const links = document.querySelectorAll('a');
-        links.forEach(link => {
-          if (link.textContent.trim() === 'Menu' && !link.hasAttribute('data-menu-replaced')) {
-            link.setAttribute('data-menu-replaced', 'true');
-            link.setAttribute('href', '/weekly-menu.html');
-            link.onclick = (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              window.location.href = '/weekly-menu.html';
-              return false;
-            };
-          }
+          };
+          // Remove all event listeners
+          const newLink = link.cloneNode(true);
+          newLink.onclick = (e) => {
+            e.preventDefault();
+            window.location.href = '/weekly-menu.html';
+            return false;
+          };
+          link.parentNode.replaceChild(newLink, link);
         });
       };
       
-      // Try multiple times
-      setTimeout(replaceMenuLink, 50);
-      setTimeout(replaceMenuLink, 200);
-      setTimeout(replaceMenuLink, 500);
-      setTimeout(replaceMenuLink, 1000);
-      setTimeout(replaceMenuLink, 2000);
+      // Try immediately
+      redirectToMenu();
       
-      // Monitor for DOM changes
-      const observer = new MutationObserver(replaceMenuLink);
-      observer.observe(document.body, { childList: true, subtree: true });
+      // Try after delays
+      setTimeout(redirectToMenu, 100);
+      setTimeout(redirectToMenu, 300);
+      setTimeout(redirectToMenu, 500);
+      setTimeout(redirectToMenu, 1000);
+      setTimeout(redirectToMenu, 2000);
+      setTimeout(redirectToMenu, 3000);
       
-      // Show deadline message
-      function checkRoute() {
-        const banner = document.getElementById('deadline-message');
-        if (window.location.pathname === '/menu' || window.location.pathname === '/weekly-menu.html') {
-          banner.style.display = 'block';
-        } else {
-          banner.style.display = 'none';
+      // Monitor for changes
+      const observer = new MutationObserver(() => {
+        redirectToMenu();
+      });
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+      
+      // Intercept history changes
+      const originalPushState = history.pushState;
+      history.pushState = function(state, title, url) {
+        if (url && url.includes('/menu')) {
+          window.location.href = '/weekly-menu.html';
+          return;
         }
-      }
-      
-      checkRoute();
-      window.addEventListener('popstate', checkRoute);
+        return originalPushState.apply(history, arguments);
+      };
     </script>
   </body>
 </html>
