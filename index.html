@@ -28,22 +28,38 @@
     </div>
     <div id="root"></div>
     <script>
-      // Redirect Menu button to weekly-menu.html
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          const menuButtons = document.querySelectorAll('a, button');
-          menuButtons.forEach(function(element) {
-            const text = element.textContent.trim();
-            if (text === 'Menu') {
-              element.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = '/weekly-menu.html';
-              });
-            }
-          });
-        }, 500);
-      });
+      // Intercept navigation to /menu and redirect to /weekly-menu.html
+      const originalPushState = history.pushState;
+      const originalReplaceState = history.replaceState;
+      
+      history.pushState = function(state, title, url) {
+        if (url && url.includes('/menu')) {
+          window.location.href = '/weekly-menu.html';
+          return;
+        }
+        return originalPushState.apply(this, arguments);
+      };
+      
+      history.replaceState = function(state, title, url) {
+        if (url && url.includes('/menu')) {
+          window.location.href = '/weekly-menu.html';
+          return;
+        }
+        return originalReplaceState.apply(this, arguments);
+      };
+      
+      // Also intercept link clicks
+      document.addEventListener('click', function(e) {
+        const target = e.target.closest('a, button');
+        if (target) {
+          const href = target.getAttribute('href');
+          if (href === '/menu' || (target.textContent && target.textContent.trim() === 'Menu')) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/weekly-menu.html';
+          }
+        }
+      }, true);
       
       // Show deadline message only on menu page
       function checkRoute() {
@@ -60,11 +76,6 @@
       
       // Listen for route changes (React Router)
       window.addEventListener('popstate', checkRoute);
-      const originalPushState = history.pushState;
-      history.pushState = function() {
-        originalPushState.apply(this, arguments);
-        checkRoute();
-      };
     </script>
   </body>
 </html>
