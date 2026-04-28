@@ -28,38 +28,31 @@
     </div>
     <div id="root"></div>
     <script>
-      // Intercept navigation to /menu and redirect to /weekly-menu.html
-      const originalPushState = history.pushState;
-      const originalReplaceState = history.replaceState;
-      
-      history.pushState = function(state, title, url) {
-        if (url && url.includes('/menu')) {
-          window.location.href = '/weekly-menu.html';
-          return;
-        }
-        return originalPushState.apply(this, arguments);
-      };
-      
-      history.replaceState = function(state, title, url) {
-        if (url && url.includes('/menu')) {
-          window.location.href = '/weekly-menu.html';
-          return;
-        }
-        return originalReplaceState.apply(this, arguments);
-      };
-      
-      // Also intercept link clicks
-      document.addEventListener('click', function(e) {
-        const target = e.target.closest('a, button');
-        if (target) {
-          const href = target.getAttribute('href');
-          if (href === '/menu' || (target.textContent && target.textContent.trim() === 'Menu')) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.href = '/weekly-menu.html';
+      // Wait for React to render, then replace Menu button with direct link
+      const replaceMenuButton = () => {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+          if (btn.textContent.trim() === 'Menu' && !btn.dataset.replaced) {
+            btn.dataset.replaced = 'true';
+            btn.onclick = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.location.href = '/weekly-menu.html';
+              return false;
+            };
           }
-        }
-      }, true);
+        });
+      };
+      
+      // Try multiple times to catch the button after React renders
+      setTimeout(replaceMenuButton, 100);
+      setTimeout(replaceMenuButton, 500);
+      setTimeout(replaceMenuButton, 1000);
+      setTimeout(replaceMenuButton, 2000);
+      
+      // Also monitor for DOM changes
+      const observer = new MutationObserver(replaceMenuButton);
+      observer.observe(document.body, { childList: true, subtree: true });
       
       // Show deadline message only on menu page
       function checkRoute() {
