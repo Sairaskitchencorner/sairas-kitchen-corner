@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/menu", "destination": "/weekly-menu.html", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/(?!weekly-menu\\.html).*", "destination": "/index.html" }
   ]
