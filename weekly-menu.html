@@ -10,240 +10,276 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f1e8;
             color: #333;
+            line-height: 1.6;
         }
-        
+
         .header {
-            background-color: #5a4a3a;
-            color: #d4af37;
-            padding: 2rem 1rem;
+            background-color: #5c4033;
+            color: #ffd700;
+            padding: 20px;
             text-align: center;
-            border-bottom: 3px solid #d4af37;
+            border-bottom: 5px solid #ffd700;
         }
-        
-        .logo-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .logo {
-            width: 80px;
-            height: 80px;
-            background-color: #d4af37;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-        
+
         .header h1 {
             font-size: 2.5rem;
-            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffd700;
         }
-        
+
         .header p {
-            font-style: italic;
-            font-size: 1rem;
-            color: #e8d4b0;
-        }
-        
-        .menu-title {
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin: 1rem 0;
-            font-weight: bold;
-        }
-        
-        .menu-subtitle {
             font-size: 1.1rem;
-            color: #5a4a3a;
-            margin-bottom: 1rem;
+            color: #fff;
         }
-        
-        .deadline-message {
+
+        .deadline-banner {
             background-color: #fef3c7;
+            border: 2px solid #f59e0b;
             color: #92400e;
-            padding: 1rem;
+            padding: 15px 20px;
             text-align: center;
             font-weight: bold;
-            margin: 1rem 0;
-            border-radius: 5px;
+            margin: 20px;
+            border-radius: 8px;
+            font-size: 1rem;
         }
-        
+
+        .menu-info {
+            text-align: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            margin: 0 20px 20px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 0 10px;
         }
-        
+
         .days-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px;
         }
-        
+
         .day-card {
-            background-color: white;
-            border: 2px solid #8b7355;
-            border-radius: 10px;
-            padding: 1.5rem;
+            background-color: #fff;
+            border: 3px solid #5c4033;
+            border-radius: 12px;
+            padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            min-height: auto;
             overflow: visible;
         }
-        
+
         .day-header {
-            background-color: #5a4a3a;
-            color: #d4af37;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
+            background-color: #5c4033;
+            color: #ffd700;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 9px 9px 0 0;
             text-align: center;
         }
-        
+
         .day-header h2 {
             font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 5px;
         }
-        
+
         .day-header p {
-            font-size: 0.9rem;
-            color: #e8d4b0;
+            font-size: 0.95rem;
+            color: #fff;
         }
-        
+
         .menu-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
-        
+
         .section-title {
             display: inline-block;
-            padding: 0.4rem 0.8rem;
+            padding: 6px 12px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.85rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 10px;
+            color: #fff;
         }
-        
+
         .section-title.regular {
             background-color: #d4af37;
-            color: #5a4a3a;
+            color: #333;
         }
-        
+
         .section-title.vegetarian {
-            background-color: #4caf50;
-            color: white;
+            background-color: #22c55e;
         }
-        
+
         .section-title.desi {
-            background-color: #2196f3;
-            color: white;
+            background-color: #3b82f6;
         }
-        
-        .menu-item {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #e0e0e0;
+
+        .menu-items {
+            list-style: none;
+            padding-left: 0;
         }
-        
-        .menu-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .item-name {
-            font-weight: bold;
-            color: #5a4a3a;
-            font-size: 1rem;
-        }
-        
-        .item-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 0.3rem;
-            font-style: italic;
-        }
-        
-        .footer {
-            background-color: #5a4a3a;
-            color: #d4af37;
-            padding: 2rem 1rem;
-            text-align: center;
-            margin-top: 3rem;
-            border-top: 3px solid #d4af37;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer p {
-            margin: 0.5rem 0;
+
+        .menu-items li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
             font-size: 0.95rem;
         }
-        
-        .contact-info {
-            margin: 1rem 0;
-            font-size: 1.1rem;
-            font-weight: bold;
+
+        .menu-items li:last-child {
+            border-bottom: none;
         }
-        
-        .allergen-notice {
-            background-color: #ffebee;
-            border: 2px solid #c62828;
-            color: #c62828;
-            padding: 1rem;
-            border-radius: 5px;
-            margin: 2rem 0;
+
+        .item-name {
+            font-weight: bold;
+            color: #5c4033;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .item-description {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .footer {
+            background-color: #5c4033;
+            color: #fff;
             text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .allergen-notice {
+            background-color: #fee2e2;
+            border-left: 5px solid #dc2626;
+            padding: 15px 20px;
+            margin: 20px;
+            border-radius: 6px;
             font-size: 0.9rem;
         }
-        
+
+        .allergen-notice strong {
+            color: #dc2626;
+        }
+
         @media (max-width: 768px) {
-            .days-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .header h1 {
                 font-size: 1.8rem;
             }
-            
-            .menu-title {
-                font-size: 1.8rem;
+
+            .header p {
+                font-size: 0.95rem;
+            }
+
+            .days-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 10px;
+            }
+
+            .day-card {
+                padding: 15px;
+            }
+
+            .day-header {
+                padding: 12px;
+                margin: -15px -15px 15px -15px;
+            }
+
+            .day-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .deadline-banner {
+                margin: 15px 10px;
+                font-size: 0.9rem;
+                padding: 12px 15px;
+            }
+
+            .menu-info {
+                margin: 0 10px 15px 10px;
+                font-size: 0.9rem;
+            }
+
+            .allergen-notice {
+                margin: 15px 10px;
+                font-size: 0.85rem;
+            }
+
+            .menu-items li {
+                font-size: 0.9rem;
+            }
+
+            .item-description {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .day-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
+            .menu-items li {
+                font-size: 0.85rem;
+                padding: 8px 0;
+            }
+
+            .item-description {
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo-section">
-            <div class="logo">🍛</div>
-            <div>
-                <h1>Saira's Kitchen Corner</h1>
-                <p>Authentic Homemade Meals – Made Fresh Daily</p>
-            </div>
-        </div>
+        <h1>🍛 Saira's Kitchen Corner</h1>
+        <p>Authentic Homemade Meals – Made Fresh Daily</p>
     </div>
-    
+
     <div class="container">
-        <div style="text-align: center;">
-            <h2 class="menu-title">Weekly Menu</h2>
-            <p class="menu-subtitle">April 27 – May 1, 2026 • $30 / Meal • Serves 2 People</p>
-            <div class="deadline-message">
-                Missed your order deadline? Just text/call us and we will try our best to accommodate you😊
-            </div>
+        <div class="deadline-banner">
+            ⏰ Missed your order deadline? Just text/call us and we will try our best to accommodate you😊
         </div>
-        
+
+        <div class="menu-info">
+            <strong>Weekly Menu: April 27 – May 1, 2026</strong><br>
+            $30 / Meal • Serves 2 People
+        </div>
+
         <div class="days-grid">
             <!-- MONDAY -->
             <div class="day-card">
@@ -251,204 +287,232 @@
                     <h2>Monday</h2>
                     <p>April 27</p>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title regular">Regular</div>
-                    <div class="menu-item">
-                        <div class="item-name">Chicken or Shrimp Tacos</div>
-                        <div class="item-description">Crispy or soft tacos with tender chicken or shrimp, fresh lettuce, tomatoes, and zesty lime crema.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Guacamole & Chips</div>
-                        <div class="item-description">Crispy tortilla chips with fresh guacamole, lime, and cilantro.</div>
-                    </div>
+                    <span class="section-title regular">Regular</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Chicken or Shrimp Tacos</span>
+                            <span class="item-description">Crispy or soft tacos with tender chicken or shrimp, fresh lettuce, tomatoes, and zesty lime crema.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Guacamole & Chips</span>
+                            <span class="item-description">Crispy tortilla chips with fresh guacamole, lime, and cilantro.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title vegetarian">Vegetarian</div>
-                    <div class="menu-item">
-                        <div class="item-name">Vegetable Tacos</div>
-                        <div class="item-description">Fresh vegetable tacos with crisp lettuce, tomatoes, avocado, and zesty lime crema.</div>
-                    </div>
+                    <span class="section-title vegetarian">Vegetarian</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Vegetable Tacos</span>
+                            <span class="item-description">Fresh vegetable tacos with crisp lettuce, tomatoes, avocado, and zesty lime crema.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title desi">Desi Menu</div>
-                    <div class="menu-item">
-                        <div class="item-name">Chicken Karahi</div>
-                        <div class="item-description">Tender chicken cooked in a thick tomato-based sauce with fresh ginger, green peppers, and traditional spices.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Baingan Sabzi</div>
-                        <div class="item-description">Tender eggplant cooked down with tomatoes, onions, and aromatic spices.</div>
-                    </div>
+                    <span class="section-title desi">Desi Menu</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Chicken Karahi</span>
+                            <span class="item-description">Tender chicken cooked in a thick tomato-based sauce with fresh ginger, green peppers, and traditional spices.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Baingan Sabzi</span>
+                            <span class="item-description">Tender eggplant cooked down with tomatoes, onions, and aromatic spices.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
+
             <!-- TUESDAY -->
             <div class="day-card">
                 <div class="day-header">
                     <h2>Tuesday</h2>
                     <p>April 28</p>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title regular">Regular</div>
-                    <div class="menu-item">
-                        <div class="item-name">Beef or Chicken Chapli Kababs</div>
-                        <div class="item-description">Spiced ground beef or chicken patties, pan-fried until crispy on the outside and juicy inside.</div>
-                    </div>
+                    <span class="section-title regular">Regular</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Beef or Chicken Chapli Kababs</span>
+                            <span class="item-description">Spiced ground beef or chicken patties, pan-fried until crispy on the outside and juicy inside.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title vegetarian">Vegetarian</div>
-                    <div class="menu-item">
-                        <div class="item-name">Veggie Kababs</div>
-                        <div class="item-description">Seasoned vegetable patties with potatoes, peas, and aromatic spices, pan-fried until golden.</div>
-                    </div>
+                    <span class="section-title vegetarian">Vegetarian</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Veggie Kababs</span>
+                            <span class="item-description">Seasoned vegetable patties with potatoes, peas, and aromatic spices, pan-fried until golden.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title desi">Desi Menu</div>
-                    <div class="menu-item">
-                        <div class="item-name">Khichri</div>
-                        <div class="item-description">Tender lentils and rice cooked with aromatic spices.</div>
-                    </div>
+                    <span class="section-title desi">Desi Menu</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Khichri</span>
+                            <span class="item-description">Tender lentils and rice cooked with aromatic spices.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
+
             <!-- WEDNESDAY -->
             <div class="day-card">
                 <div class="day-header">
                     <h2>Wednesday</h2>
                     <p>April 29</p>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title regular">Regular</div>
-                    <div class="menu-item">
-                        <div class="item-name">Beef Lasagna</div>
-                        <div class="item-description">Layers of tender beef, rich tomato sauce, creamy béchamel, and melted cheese.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Pasta Salad</div>
-                        <div class="item-description">Fresh pasta salad with vegetables, olive oil, and Italian herbs.</div>
-                    </div>
+                    <span class="section-title regular">Regular</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Beef Lasagna</span>
+                            <span class="item-description">Layers of tender beef, rich tomato sauce, creamy béchamel, and melted cheese.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Pasta Salad</span>
+                            <span class="item-description">Fresh pasta salad with vegetables, olive oil, and Italian herbs.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title vegetarian">Vegetarian</div>
-                    <div class="menu-item">
-                        <div class="item-name">Eggplant Lasagna</div>
-                        <div class="item-description">Layers of tender eggplant, rich tomato sauce, creamy béchamel, and melted cheese.</div>
-                    </div>
+                    <span class="section-title vegetarian">Vegetarian</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Eggplant Lasagna</span>
+                            <span class="item-description">Layers of tender eggplant, rich tomato sauce, creamy béchamel, and melted cheese.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title desi">Desi Menu</div>
-                    <div class="menu-item">
-                        <div class="item-name">Chicken Keema OR Mixed Veg Curry</div>
-                        <div class="item-description">Ground chicken or mixed vegetables in a rich, spiced tomato-based sauce.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Mash / Urad Daal</div>
-                        <div class="item-description">Creamy urad lentils in desi ghee with garlic, warming spices, and a golden fried-onion tadka.</div>
-                    </div>
+                    <span class="section-title desi">Desi Menu</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Chicken Keema OR Mixed Veg Curry</span>
+                            <span class="item-description">Ground chicken or mixed vegetables in a rich, spiced tomato-based sauce.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Mash / Urad Daal</span>
+                            <span class="item-description">Creamy urad lentils in desi ghee with garlic, warming spices, and a golden fried-onion tadka.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
+
             <!-- THURSDAY -->
             <div class="day-card">
                 <div class="day-header">
                     <h2>Thursday</h2>
                     <p>April 30</p>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title regular">Regular</div>
-                    <div class="menu-item">
-                        <div class="item-name">Chicken Caesar Wraps</div>
-                        <div class="item-description">Grilled chicken wraps with crisp lettuce, parmesan, croutons, and creamy Caesar dressing.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Mac & Cheese</div>
-                        <div class="item-description">Creamy macaroni pasta with melted cheese sauce.</div>
-                    </div>
+                    <span class="section-title regular">Regular</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Chicken Caesar Wraps</span>
+                            <span class="item-description">Grilled chicken wraps with crisp lettuce, parmesan, croutons, and creamy Caesar dressing.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Mac & Cheese</span>
+                            <span class="item-description">Creamy macaroni pasta with melted cheese sauce.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title vegetarian">Vegetarian</div>
-                    <div class="menu-item">
-                        <div class="item-name">Vegetable & Cheese Wraps</div>
-                        <div class="item-description">Fresh vegetable wraps with cheese, lettuce, tomatoes, and creamy ranch dressing.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Mac & Cheese</div>
-                        <div class="item-description">Creamy macaroni pasta with melted cheese sauce.</div>
-                    </div>
+                    <span class="section-title vegetarian">Vegetarian</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Vegetable & Cheese Wraps</span>
+                            <span class="item-description">Fresh vegetable wraps with cheese, lettuce, tomatoes, and creamy ranch dressing.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Mac & Cheese</span>
+                            <span class="item-description">Creamy macaroni pasta with melted cheese sauce.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title desi">Desi Menu</div>
-                    <div class="menu-item">
-                        <div class="item-name">Goat Karahi (+$5) OR Paneer Makhni</div>
-                        <div class="item-description">Tender goat or soft paneer in a thick, flavorful tomato-based sauce with ginger and green peppers.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Peas Pulao</div>
-                        <div class="item-description">Fragrant basmati rice cooked with peas and aromatic spices.</div>
-                    </div>
+                    <span class="section-title desi">Desi Menu</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Goat Karahi (+$5) OR Paneer Makhni</span>
+                            <span class="item-description">Tender goat or soft paneer in a thick, flavorful tomato-based sauce with ginger and green peppers.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Peas Pulao</span>
+                            <span class="item-description">Fragrant basmati rice cooked with peas and aromatic spices.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
+
             <!-- FRIDAY -->
             <div class="day-card">
                 <div class="day-header">
                     <h2>Friday</h2>
                     <p>May 1</p>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title regular">Regular</div>
-                    <div class="menu-item">
-                        <div class="item-name">Chicken Chow Mein</div>
-                        <div class="item-description">Stir-fried noodles with tender chicken, crisp vegetables, and a savory sauce.</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-name">Sesame Chicken</div>
-                        <div class="item-description">Crispy chicken coated in sesame seeds with a savory glaze.</div>
-                    </div>
+                    <span class="section-title regular">Regular</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Chicken Chow Mein</span>
+                            <span class="item-description">Stir-fried noodles with tender chicken, crisp vegetables, and a savory sauce.</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Sesame Chicken</span>
+                            <span class="item-description">Crispy chicken coated in sesame seeds with a savory glaze.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title vegetarian">Vegetarian</div>
-                    <div class="menu-item">
-                        <div class="item-name">Vegetable Chow Mein</div>
-                        <div class="item-description">Stir-fried noodles with crisp vegetables and a savory sauce.</div>
-                    </div>
+                    <span class="section-title vegetarian">Vegetarian</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Vegetable Chow Mein</span>
+                            <span class="item-description">Stir-fried noodles with crisp vegetables and a savory sauce.</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="menu-section">
-                    <div class="section-title desi">Desi Menu</div>
-                    <div class="menu-item">
-                        <div class="item-name">Vegetables in Chinese Gravy</div>
-                        <div class="item-description">Crispy vegetables in a savory Chinese-style gravy with garlic and ginger.</div>
-                    </div>
+                    <span class="section-title desi">Desi Menu</span>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name">Vegetables in Chinese Gravy</span>
+                            <span class="item-description">Crispy vegetables in a savory Chinese-style gravy with garlic and ginger.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        
+
         <div class="allergen-notice">
-            ⚠️ <strong>Allergen Notice:</strong> Our meals may contain nuts, dairy (milk, yogurt), gluten, eggs, and other common allergens. Please inform us of any food allergies at the time of placing your order. Saira's Kitchen Corner is not responsible for any allergic reactions if not informed of allergies prior to placing the order.
+            <strong>⚠️ Allergen Notice:</strong> Our meals may contain nuts, dairy (milk, yogurt), gluten, eggs, and other common allergens. Please inform us of any food allergies at the time of placing your order. Saira's Kitchen Corner is not responsible for any allergic reactions if not informed of allergies prior to placing the order.
         </div>
     </div>
-    
+
     <div class="footer">
-        <div class="footer-content">
-            <div class="contact-info">📞 To order, Text or WhatsApp: 972-313-5581</div>
-            <p>sairaskitchencorner.com • Monument, CO</p>
-            <p style="margin-top: 1rem; font-size: 0.85rem;">© 2026 Saira's Kitchen Corner. All rights reserved.</p>
-        </div>
+        <h3>📞 To order, Text or WhatsApp: 972-313-5581</h3>
+        <p><strong>sairaskitchencorner.com</strong> • Monument, CO</p>
+        <p style="margin-top: 20px; font-size: 0.85rem;">© 2026 Saira's Kitchen Corner. All rights reserved.</p>
     </div>
 </body>
 </html>
