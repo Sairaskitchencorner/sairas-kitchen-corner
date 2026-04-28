@@ -1,11 +1,8 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>Saira's Kitchen Corner</title>    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,48 +11,42 @@
     <link rel="stylesheet" crossorigin href="/assets/index-BtkhrQJs.css">
     <style>
       /* Hide Today's Special elements */
-      [class*="TodaysSpecial"], 
-      button:has(span:contains("🔥")), 
-      button:has(span:contains("✨")),
-      a[href*="todays-special"],
-      div:has(> p:contains("Only 3 spots left")) {
+      .todays-special-btn, 
+      [class*="TodaysSpecial"],
+      a[href*="todays-special"] {
         display: none !important;
       }
     </style>
     <script>
-      // Force remove Today's Special elements if they appear
-      setInterval(() => {
-        document.querySelectorAll('button, a, div').forEach(el => {
-          if (el.textContent.includes("Today's Special") || 
-              el.textContent.includes("🔥") || 
-              el.textContent.includes("✨") ||
-              el.textContent.includes("Only 3 spots left")) {
-            el.style.display = 'none';
-          }
-          
-          // Add deadline message to menu page
+      // Simple script to hide elements and add message
+      (function() {
+        function updateUI() {
+          // Hide by text content
+          document.querySelectorAll('button, a, div, span, p').forEach(el => {
+            const text = el.textContent;
+            if (text.includes("Today's Special") || text.includes("🔥") || text.includes("✨") || text.includes("Only 3 spots left")) {
+              el.style.display = 'none';
+            }
+          });
+
+          // Add deadline message
           if (window.location.pathname.includes('/menu')) {
             const header = document.querySelector('h1, h2');
             if (header && !document.getElementById('deadline-msg')) {
               const msg = document.createElement('div');
               msg.id = 'deadline-msg';
-              msg.style.textAlign = 'center';
-              msg.style.padding = '10px';
-              msg.style.backgroundColor = '#fff3cd';
-              msg.style.color = '#856404';
-              msg.style.fontWeight = 'bold';
-              msg.style.marginBottom = '20px';
+              msg.style.cssText = 'text-align:center;padding:15px;background-color:#fff3cd;color:#856404;font-weight:bold;margin-bottom:20px;border-radius:8px;border:1px solid #ffeeba;';
               msg.textContent = "Missed your order deadline? Just text/call us and we will try our best to accommodate you😊";
               header.parentNode.insertBefore(msg, header);
             }
           }
-        });
-      }, 500);
+        }
+        setInterval(updateUI, 1000);
+        window.addEventListener('load', updateUI);
+      })();
     </script>
   </head>
-
   <body>
     <div id="root"></div>
   </body>
-
 </html>
