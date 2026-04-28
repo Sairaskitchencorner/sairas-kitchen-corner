@@ -28,44 +28,49 @@
     </div>
     <div id="root"></div>
     <script>
-      // Replace Menu button with a direct link
-      const replaceMenuButton = () => {
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(btn => {
-          if (btn.textContent.trim() === 'Menu' && !btn.hasAttribute('data-menu-replaced')) {
-            btn.setAttribute('data-menu-replaced', 'true');
-            // Create a new link element
-            const link = document.createElement('a');
-            link.href = '/weekly-menu.html';
-            link.textContent = btn.textContent;
-            link.className = btn.className;
-            link.style.cssText = btn.style.cssText;
-            // Copy all attributes
-            Array.from(btn.attributes).forEach(attr => {
-              if (attr.name !== 'class' && attr.name !== 'style' && attr.name !== 'data-menu-replaced') {
-                link.setAttribute(attr.name, attr.value);
-              }
-            });
-            // Replace the button with the link
-            btn.parentNode.replaceChild(link, btn);
+      // Intercept all link clicks globally
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (target) {
+          const href = target.getAttribute('href');
+          if (href === '/weekly-menu.html') {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = '/weekly-menu.html';
+            return false;
+          }
+        }
+      }, true);
+      
+      // Also replace Menu link with direct navigation
+      const replaceMenuLink = () => {
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+          if (link.textContent.trim() === 'Menu' && !link.hasAttribute('data-menu-replaced')) {
+            link.setAttribute('data-menu-replaced', 'true');
+            link.setAttribute('href', '/weekly-menu.html');
+            link.onclick = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.location.href = '/weekly-menu.html';
+              return false;
+            };
           }
         });
       };
       
-      // Try multiple times with increasing delays
-      setTimeout(replaceMenuButton, 50);
-      setTimeout(replaceMenuButton, 200);
-      setTimeout(replaceMenuButton, 500);
-      setTimeout(replaceMenuButton, 1000);
-      setTimeout(replaceMenuButton, 2000);
+      // Try multiple times
+      setTimeout(replaceMenuLink, 50);
+      setTimeout(replaceMenuLink, 200);
+      setTimeout(replaceMenuLink, 500);
+      setTimeout(replaceMenuLink, 1000);
+      setTimeout(replaceMenuLink, 2000);
       
-      // Also monitor for DOM changes
-      const observer = new MutationObserver(() => {
-        replaceMenuButton();
-      });
+      // Monitor for DOM changes
+      const observer = new MutationObserver(replaceMenuLink);
       observer.observe(document.body, { childList: true, subtree: true });
       
-      // Show deadline message only on menu page
+      // Show deadline message
       function checkRoute() {
         const banner = document.getElementById('deadline-message');
         if (window.location.pathname === '/menu' || window.location.pathname === '/weekly-menu.html') {
@@ -75,10 +80,7 @@
         }
       }
       
-      // Initial check
       checkRoute();
-      
-      // Listen for route changes (React Router)
       window.addEventListener('popstate', checkRoute);
     </script>
   </body>
