@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(?!weekly-menu\\.html).*", "destination": "/index.html" }
   ]
 }
