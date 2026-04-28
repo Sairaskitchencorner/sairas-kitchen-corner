@@ -6,31 +6,6 @@
     <title>Saira's Kitchen Corner</title>
     <script type="module" crossorigin src="/assets/index-D9JOW-p7.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BtkhrQJs.css">
-    <style>
-      .todays-special-btn, [class*="TodaysSpecial"], a[href*="todays-special"] { display: none !important; }
-    </style>
-    <script>
-      (function() {
-        function updateUI() {
-          document.querySelectorAll('button, a, div, span, p').forEach(el => {
-            if (el.textContent.includes("Today's Special") || el.textContent.includes("🔥") || el.textContent.includes("✨")) {
-              el.style.display = 'none';
-            }
-          });
-          if (window.location.pathname.includes('/menu')) {
-            const header = document.querySelector('h1, h2');
-            if (header && !document.getElementById('deadline-msg')) {
-              const msg = document.createElement('div');
-              msg.id = 'deadline-msg';
-              msg.style.cssText = 'text-align:center;padding:10px;background-color:#fff3cd;color:#856404;font-weight:bold;margin-bottom:20px;';
-              msg.textContent = "Missed your order deadline? Just text/call us and we will try our best to accommodate you😊";
-              header.parentNode.insertBefore(msg, header);
-            }
-          }
-        }
-        setInterval(updateUI, 1000);
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
