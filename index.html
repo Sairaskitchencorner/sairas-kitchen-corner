@@ -28,10 +28,27 @@
     </div>
     <div id="root"></div>
     <script>
+      // Redirect Menu button to weekly-menu.html
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          const menuButtons = document.querySelectorAll('a, button');
+          menuButtons.forEach(function(element) {
+            const text = element.textContent.trim();
+            if (text === 'Menu') {
+              element.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = '/weekly-menu.html';
+              });
+            }
+          });
+        }, 500);
+      });
+      
       // Show deadline message only on menu page
       function checkRoute() {
         const banner = document.getElementById('deadline-message');
-        if (window.location.pathname === '/menu') {
+        if (window.location.pathname === '/menu' || window.location.pathname === '/weekly-menu.html') {
           banner.style.display = 'block';
         } else {
           banner.style.display = 'none';
