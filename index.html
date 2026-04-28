@@ -2,47 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Saira's Kitchen Corner</title>    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saira's Kitchen Corner</title>
     <script type="module" crossorigin src="/assets/index-D9JOW-p7.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BtkhrQJs.css">
     <style>
-      /* Hide Today's Special elements */
-      .todays-special-btn, 
-      [class*="TodaysSpecial"],
-      a[href*="todays-special"] {
-        display: none !important;
-      }
+      .todays-special-btn, [class*="TodaysSpecial"], a[href*="todays-special"] { display: none !important; }
     </style>
     <script>
-      // Simple script to hide elements and add message
       (function() {
         function updateUI() {
-          // Hide by text content
           document.querySelectorAll('button, a, div, span, p').forEach(el => {
-            const text = el.textContent;
-            if (text.includes("Today's Special") || text.includes("🔥") || text.includes("✨") || text.includes("Only 3 spots left")) {
+            if (el.textContent.includes("Today's Special") || el.textContent.includes("🔥") || el.textContent.includes("✨")) {
               el.style.display = 'none';
             }
           });
-
-          // Add deadline message
           if (window.location.pathname.includes('/menu')) {
             const header = document.querySelector('h1, h2');
             if (header && !document.getElementById('deadline-msg')) {
               const msg = document.createElement('div');
               msg.id = 'deadline-msg';
-              msg.style.cssText = 'text-align:center;padding:15px;background-color:#fff3cd;color:#856404;font-weight:bold;margin-bottom:20px;border-radius:8px;border:1px solid #ffeeba;';
+              msg.style.cssText = 'text-align:center;padding:10px;background-color:#fff3cd;color:#856404;font-weight:bold;margin-bottom:20px;';
               msg.textContent = "Missed your order deadline? Just text/call us and we will try our best to accommodate you😊";
               header.parentNode.insertBefore(msg, header);
             }
           }
         }
         setInterval(updateUI, 1000);
-        window.addEventListener('load', updateUI);
       })();
     </script>
   </head>
