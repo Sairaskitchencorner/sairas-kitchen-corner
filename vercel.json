@@ -3,6 +3,6 @@
     { "source": "/menu", "destination": "/weekly-menu.html", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/(?!weekly-menu\\.html).*", "destination": "/index.html" }
+    { "source": "/(?!weekly-menu\\.html|menu).*", "destination": "/index.html" }
   ]
 }
