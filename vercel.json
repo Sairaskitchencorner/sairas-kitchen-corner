@@ -1,5 +1,13 @@
 {
-  "rewrites": [
-    { "source": "/(?!weekly-menu\\.html|menu).*", "destination": "/index.html" }
+  "routes": [
+    { "src": "/todays-special", "dest": "/todays-special.html" },
+    { "src": "/todays-special.html", "dest": "/todays-special.html" },
+    { "src": "/weekly-menu", "dest": "/weekly-menu.html" },
+    { "src": "/weekly-menu.html", "dest": "/weekly-menu.html" },
+    { "src": "/frozen-items", "dest": "/frozen-items.html" },
+    { "src": "/frozen-items.html", "dest": "/frozen-items.html" },
+    { "src": "/testimonials", "dest": "/testimonials.html" },
+    { "src": "/testimonials.html", "dest": "/testimonials.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
