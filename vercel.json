@@ -2,6 +2,7 @@
   "routes": [
     { "src": "/todays-special", "dest": "/todays-special.html" },
     { "src": "/weekly-menu", "dest": "/weekly-menu.html" },
+    { "src": "/menu", "dest": "/weekly-menu.html" },
     { "src": "/frozen-items", "dest": "/frozen-items.html" },
     { "src": "/testimonials", "dest": "/testimonials.html" },
     { "handle": "filesystem" },
