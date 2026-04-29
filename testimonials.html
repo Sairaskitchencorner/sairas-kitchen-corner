@@ -205,6 +205,42 @@
         }
         .order-btn.secondary:hover { background: rgba(245,200,66,0.15); }
 
+        /* ── VIDEO SECTION ── */
+        .video-section {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e8d5b0;
+            padding: 28px 28px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 12px rgba(92,45,14,0.08);
+            text-align: center;
+        }
+        .video-section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #5c2d0e;
+            margin-bottom: 6px;
+        }
+        .video-section p {
+            font-size: 0.9rem;
+            color: #8b6914;
+            margin-bottom: 16px;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 520px) {
             .testimonial-card, .photo-card { padding: 22px 18px 18px; }
@@ -306,6 +342,18 @@
                     <div class="testimonial-source">via Nextdoor</div>
                 </div>
                 <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- OUR STORY VIDEO -->
+        <div class="video-section">
+            <h2>Our Story in Motion</h2>
+            <p>See the love and care that goes into every meal we make.</p>
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata" poster="">
+                    <source src="/story-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
 
