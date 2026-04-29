@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today's Specials - Saira's Kitchen Corner</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fdf8f0; color: #3d2b1f; min-height: 100vh; }
+
+        /* Nav */
+        .nav { background: #5c2d0e; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .nav-brand { color: #f5c842; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; transition: background 0.2s; }
+        .nav-links a:hover { background: rgba(255,255,255,0.3); }
+
+        /* Header */
+        .header { background: linear-gradient(135deg, #5c2d0e 0%, #8b4513 60%, #a0522d 100%); color: #fff; text-align: center; padding: 52px 24px 40px; }
+        .header h1 { font-size: clamp(2rem, 6vw, 3rem); color: #f5c842; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px; }
+        .header p { font-size: 1.05rem; color: rgba(255,255,255,0.88); max-width: 520px; margin: 0 auto; }
+
+        /* Price badge */
+        .price-badge { display: inline-block; background: #f5c842; color: #3d2b1f; font-weight: 800; font-size: 1.1rem; padding: 10px 28px; border-radius: 30px; margin-top: 18px; }
+
+        /* Container */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+
+        /* Specials grid */
+        .specials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 48px; }
+
+        /* Dish card */
+        .dish-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(92,45,14,0.12); border: 1px solid #e8d5b0; transition: transform 0.2s, box-shadow 0.2s; }
+        .dish-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(92,45,14,0.18); }
+        .dish-img { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .dish-body { padding: 24px 22px 26px; }
+        .dish-name { font-size: 1.5rem; font-weight: 800; color: #5c2d0e; margin-bottom: 10px; }
+        .dish-desc { font-size: 1rem; color: #6b4c35; line-height: 1.65; margin-bottom: 14px; }
+        .dish-tag { display: inline-block; background: #fff8e7; border: 1px solid #f5c842; color: #8b4513; font-size: 0.82rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-right: 6px; margin-bottom: 4px; }
+
+        /* Info banner */
+        .info-banner { background: #fff8e7; border: 1px solid #f5c842; border-radius: 12px; padding: 18px 22px; margin-bottom: 36px; text-align: center; font-size: 1rem; color: #5c2d0e; }
+        .info-banner strong { color: #8b4513; }
+
+        /* Order section */
+        .order-section { background: linear-gradient(135deg, #5c2d0e, #8b4513); color: #fff; border-radius: 18px; padding: 36px 28px; text-align: center; }
+        .order-section h2 { font-size: 1.6rem; color: #f5c842; margin-bottom: 10px; }
+        .order-section p { font-size: 1rem; color: rgba(255,255,255,0.88); margin-bottom: 22px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .order-btn { display: inline-block; background: #f5c842; color: #3d2b1f; font-weight: 700; font-size: 1rem; padding: 13px 30px; border-radius: 30px; text-decoration: none; margin: 6px; transition: background 0.2s; }
+        .order-btn:hover { background: #e0b030; }
+        .order-btn.secondary { background: transparent; border: 2px solid #f5c842; color: #f5c842; }
+        .order-btn.secondary:hover { background: rgba(245,200,66,0.15); }
+
+        /* Allergen */
+        .allergen { background: #fff3cd; border: 1px solid #ffc107; border-radius: 10px; padding: 14px 18px; margin-top: 32px; font-size: 0.88rem; color: #664d03; text-align: center; }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .specials-grid { grid-template-columns: 1fr; gap: 24px; }
+            .dish-img { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-brand" href="/">Saira's Kitchen Corner</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu">Weekly Menu</a>
+            <a href="/frozen-items">Frozen Items</a>
+            <a href="/testimonials">Reviews</a>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>Today's Specials</h1>
+        <p>Fresh, homemade and made with love — ready for pickup today!</p>
+        <div class="price-badge">$30 / Meal &nbsp;·&nbsp; Serves 2 &nbsp;·&nbsp; Generous Portions</div>
+    </div>
+
+    <div class="container">
+        <div class="info-banner">
+            <strong>Order by Friday 8 PM</strong> for the following week's meals &nbsp;|&nbsp;
+            Contact us via <strong>WhatsApp, Text, or Call</strong> to place your order
+        </div>
+
+        <div class="specials-grid">
+            <!-- Beef Lasagna -->
+            <div class="dish-card">
+                <img class="dish-img" src="/beef-lasagna.jpg" alt="Beef Lasagna" />
+                <div class="dish-body">
+                    <div class="dish-name">Beef Lasagna</div>
+                    <div class="dish-desc">
+                        Rich, hearty layers of seasoned beef bolognese, velvety bechamel sauce, and melted cheese — baked to golden perfection. A comforting classic made from scratch with the freshest ingredients.
+                    </div>
+                    <span class="dish-tag">Homemade</span>
+                    <span class="dish-tag">Serves 2</span>
+                    <span class="dish-tag">Italian</span>
+                </div>
+            </div>
+
+            <!-- Garlic Bread -->
+            <div class="dish-card">
+                <img class="dish-img" src="/garlic-bread.jpg" alt="Garlic Bread" />
+                <div class="dish-body">
+                    <div class="dish-name">Garlic Bread</div>
+                    <div class="dish-desc">
+                        Crispy, golden baguette generously brushed with garlic butter and fresh herbs — the perfect companion to the lasagna. Warm, fragrant, and impossible to resist.
+                    </div>
+                    <span class="dish-tag">Freshly Baked</span>
+                    <span class="dish-tag">Vegetarian</span>
+                    <span class="dish-tag">Side Dish</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-section">
+            <h2>Ready to Order?</h2>
+            <p>Text or WhatsApp us to place your order. We'll confirm your pickup time — usually ready by 5:30 PM.</p>
+            <a class="order-btn" href="https://wa.me/19723135581?text=Hi%20Saira!%20I%27d%20like%20to%20order%20today%27s%20special%20-%20Beef%20Lasagna%20%26%20Garlic%20Bread." target="_blank">📱 WhatsApp / Text Us</a>
+            <a class="order-btn secondary" href="tel:+19723135581">📞 Call Us</a>
+        </div>
+
+        <div class="allergen">
+            <strong>Allergen Notice:</strong> Our meals are prepared in a home kitchen that handles wheat, dairy, eggs, nuts, and soy. Please inform us of any allergies when ordering. Not suitable for severe allergy sufferers.
+        </div>
+    </div>
+</body>
+</html>
