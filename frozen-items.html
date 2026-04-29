@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frozen Items - Saira's Kitchen Corner</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fdf8f0; color: #3d2b1f; min-height: 100vh; }
+        .nav { background: #5c2d0e; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .nav-brand { color: #f5c842; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; }
+        .nav-links a:hover { background: rgba(255,255,255,0.3); }
+        .header { background: linear-gradient(135deg, #5c2d0e 0%, #8b4513 60%, #a0522d 100%); color: #fff; text-align: center; padding: 48px 24px 36px; }
+        .header h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); color: #f5c842; font-weight: 800; margin-bottom: 8px; }
+        .header p { font-size: 1rem; color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+        .info-banner { background: #fff8e7; border: 1px solid #f5c842; border-radius: 12px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.95rem; color: #5c2d0e; text-align: center; }
+        .info-banner strong { color: #8b4513; }
+        .category { margin-bottom: 40px; }
+        .category-title { font-size: 1.3rem; font-weight: 700; color: #5c2d0e; border-bottom: 3px solid #f5c842; padding-bottom: 8px; margin-bottom: 18px; }
+        .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+        .item-card { background: #fff; border-radius: 12px; border: 1px solid #e8d5b0; padding: 20px 16px; text-align: center; box-shadow: 0 2px 8px rgba(92,45,14,0.07); }
+        .item-name { font-size: 1rem; font-weight: 700; color: #3d2b1f; margin-bottom: 8px; }
+        .item-packs { font-size: 0.82rem; color: #8b6914; background: #fff8e7; border-radius: 20px; padding: 4px 10px; display: inline-block; }
+        .order-section { background: linear-gradient(135deg, #5c2d0e, #8b4513); color: #fff; border-radius: 16px; padding: 32px 24px; text-align: center; margin-top: 40px; }
+        .order-section h2 { font-size: 1.5rem; color: #f5c842; margin-bottom: 10px; }
+        .order-section p { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+        .order-btn { display: inline-block; background: #f5c842; color: #3d2b1f; font-weight: 700; font-size: 1rem; padding: 12px 28px; border-radius: 30px; text-decoration: none; margin: 6px; }
+        .order-btn.secondary { background: transparent; border: 2px solid #f5c842; color: #f5c842; }
+        .allergen { background: #fff3cd; border: 1px solid #ffc107; border-radius: 10px; padding: 14px 18px; margin-top: 32px; font-size: 0.85rem; color: #664d03; text-align: center; }
+        @media (max-width: 480px) { .items-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-brand" href="/">Saira's Kitchen Corner</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu">Weekly Menu</a>
+            <a href="/todays-special">Today's Special</a>
+        </div>
+    </nav>
+    <div class="header">
+        <h1>Frozen Items</h1>
+        <p>Homemade frozen meals - ready when you are. Just heat and enjoy!</p>
+    </div>
+    <div class="container">
+        <div class="info-banner">
+            All frozen items are available in <strong>Packs of 6, 8, or 12</strong>.
+            Contact us to place your order - we'll confirm availability and pricing.
+        </div>
+        <div class="category">
+            <div class="category-title">Keema Naans</div>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-name">Beef Keema Naan</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Chicken Keema Naan</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Veggie Keema Naan</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-title">Parathas</div>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-name">Keema Paratha (Beef)</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Keema Paratha (Chicken)</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Aaloo Paratha</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Gobi Paratha</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Mixed Vegetable Paratha</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="category-title">Samosas</div>
+            <div class="items-grid">
+                <div class="item-card"><div class="item-name">Beef Samosas</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Chicken Samosas</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+                <div class="item-card"><div class="item-name">Veggie Samosas</div><div class="item-packs">Packs of 6 / 8 / 12</div></div>
+            </div>
+        </div>
+        <div class="order-section">
+            <h2>Ready to Order?</h2>
+            <p>Text or WhatsApp us to place your frozen items order. We'll confirm availability and arrange pickup or delivery.</p>
+            <a class="order-btn" href="https://wa.me/19723135581?text=Hi%20Saira!%20I%27d%20like%20to%20order%20some%20frozen%20items." target="_blank">WhatsApp / Text Us</a>
+            <a class="order-btn secondary" href="tel:+19723135581">Call Us</a>
+        </div>
+        <div class="allergen">
+            <strong>Allergen Notice:</strong> Our products are prepared in a home kitchen that handles wheat, dairy, eggs, nuts, and soy. Please inform us of any allergies when ordering. Not suitable for severe allergy sufferers.
+        </div>
+    </div>
+</body>
+</html>
