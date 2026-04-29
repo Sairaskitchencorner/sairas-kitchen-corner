@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Saira's Kitchen Corner</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f1e8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        .nav {
+            background: linear-gradient(135deg, #3d2b1f, #5c2d0e);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .nav-brand {
+            color: #f5c842;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+        .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #f5c842; }
+
+        /* ── HEADER ── */
+        .header {
+            background: linear-gradient(135deg, #5c2d0e, #8b4513);
+            color: #fff;
+            text-align: center;
+            padding: 52px 24px 40px;
+        }
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #f5c842;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .stars-header {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            letter-spacing: 4px;
+        }
+
+        /* ── CONTAINER ── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        /* ── TESTIMONIAL CARDS ── */
+        .testimonial-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e8d5b0;
+            padding: 28px 28px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 12px rgba(92,45,14,0.08);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            font-size: 4rem;
+            color: #f5c842;
+            line-height: 1;
+            font-family: Georgia, serif;
+            opacity: 0.6;
+        }
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: #3d2b1f;
+            line-height: 1.75;
+            margin-bottom: 16px;
+            padding-top: 20px;
+        }
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: #5c2d0e;
+            font-size: 0.95rem;
+        }
+        .testimonial-stars {
+            color: #f5c842;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-source {
+            font-size: 0.78rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* ── PHOTO CARD (Crystal's post with food photos) ── */
+        .photo-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e8d5b0;
+            padding: 28px 28px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 12px rgba(92,45,14,0.08);
+            position: relative;
+        }
+        .photo-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            font-size: 4rem;
+            color: #f5c842;
+            line-height: 1;
+            font-family: Georgia, serif;
+            opacity: 0.6;
+        }
+        .photo-card .testimonial-text {
+            padding-top: 20px;
+        }
+        .food-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 16px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .food-photos img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── ORDER CTA ── */
+        .order-section {
+            background: linear-gradient(135deg, #5c2d0e, #8b4513);
+            color: #fff;
+            border-radius: 16px;
+            padding: 36px 24px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .order-section h2 {
+            font-size: 1.6rem;
+            color: #f5c842;
+            margin-bottom: 10px;
+        }
+        .order-section p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 22px;
+        }
+        .order-btn {
+            display: inline-block;
+            background: #f5c842;
+            color: #3d2b1f;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 13px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin: 6px;
+            transition: background 0.2s;
+        }
+        .order-btn:hover { background: #e6b800; }
+        .order-btn.secondary {
+            background: transparent;
+            border: 2px solid #f5c842;
+            color: #f5c842;
+        }
+        .order-btn.secondary:hover { background: rgba(245,200,66,0.15); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 520px) {
+            .testimonial-card, .photo-card { padding: 22px 18px 18px; }
+            .food-photos img { height: 140px; }
+            .header { padding: 36px 16px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a class="nav-brand" href="/">Saira's Kitchen Corner</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu">Weekly Menu</a>
+            <a href="/frozen-items">Frozen Items</a>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="stars-header">★★★★★</div>
+        <h1>What Our Customers Say</h1>
+        <p>Real reviews from real customers — made with love, enjoyed by families.</p>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="container">
+
+        <!-- Hannah -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                It's a big hit!!!! It was SO GOOD!! The perfect amount of heat for my fam. Amazing flavor and so tender. Huge portion size!! I will definitely order again!
+            </p>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">Hannah</div>
+                    <div class="testimonial-source">via iMessage</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- WhatsApp customer - Palak Paneer -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                Good morning Saira! You are a life saver — the food was great — loved the Palak Paneer. It's one of my favorites! And the food lasts me at least 2 meals — the quantity is amazing!
+            </p>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">Happy Customer</div>
+                    <div class="testimonial-source">via WhatsApp</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- WhatsApp customer - Biryani -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                Absolutely loved the food! I actually finished the biryani just now 😊 that was a huge portion! Thank you so much — I will be there at 5:30 to pick up the food tomorrow.
+            </p>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">Happy Customer</div>
+                    <div class="testimonial-source">via WhatsApp</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- SL - iMessage -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                Food was great overall taste wise. Portions were a little big when it came to the rice, but overall we were happy with the meal!
+            </p>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">S.L.</div>
+                    <div class="testimonial-source">via iMessage</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- Crystal - with food photos -->
+        <div class="photo-card">
+            <p class="testimonial-text">
+                Y'all, you should def try Saira's food! It's amazing. Had it for dinner last night and we had enough lunch for today.
+            </p>
+            <div class="food-photos">
+                <img src="/food-photo-crystal.jpeg" alt="Saira's Kitchen Corner meal - Palak Paneer with rice and naan" />
+                <img src="/food-photo-crystal.jpeg" alt="Saira's Kitchen Corner meal - full spread" style="object-position: right center;" />
+            </div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">Crystal Mendoza-Lopez</div>
+                    <div class="testimonial-source">via Nextdoor</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- ORDER CTA -->
+        <div class="order-section">
+            <h2>Ready to Try It Yourself?</h2>
+            <p>Join our happy customers — order your weekly meal today!</p>
+            <a class="order-btn" href="sms:9723135581">📱 WhatsApp / Text</a>
+            <a class="order-btn secondary" href="tel:9723135581">📞 Call Us</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
