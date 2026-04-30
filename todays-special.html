@@ -26,13 +26,22 @@
         /* Container */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
 
-        /* Specials grid */
+        /* OR separator */
+        .or-separator { text-align: center; font-size: 1.6rem; font-weight: 900; color: #8b4513; margin: 8px 0 8px; letter-spacing: 2px; }
+
+        /* Meal option label */
+        .meal-option-label { text-align: center; font-size: 0.95rem; font-weight: 700; color: #5c2d0e; background: #fff8e7; border: 1px solid #f5c842; border-radius: 20px; display: inline-block; padding: 5px 18px; margin-bottom: 12px; }
+
+        /* Specials grid — two columns side by side */
         .specials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 48px; }
 
+        /* Meal option block */
+        .meal-option { display: flex; flex-direction: column; align-items: center; }
+
         /* Dish card */
-        .dish-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(92,45,14,0.12); border: 1px solid #e8d5b0; transition: transform 0.2s, box-shadow 0.2s; }
+        .dish-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(92,45,14,0.12); border: 1px solid #e8d5b0; transition: transform 0.2s, box-shadow 0.2s; width: 100%; }
         .dish-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(92,45,14,0.18); }
-        .dish-img { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .dish-img { width: 100%; height: 260px; object-fit: cover; display: block; }
         .dish-body { padding: 24px 22px 26px; }
         .dish-name { font-size: 1.5rem; font-weight: 800; color: #5c2d0e; margin-bottom: 10px; }
         .dish-desc { font-size: 1rem; color: #6b4c35; line-height: 1.65; margin-bottom: 14px; }
@@ -73,7 +82,7 @@
     </nav>
 
     <div class="header">
-        <div style="font-size:1rem;color:rgba(255,255,255,0.75);margin-bottom:6px;letter-spacing:1px;">April 29, 2026</div>
+        <div style="font-size:1rem;color:rgba(255,255,255,0.75);margin-bottom:6px;letter-spacing:1px;">April 30, 2026</div>
         <h1>Today's Specials</h1>
         <p>Fresh, homemade and made with love — ready for pickup today!</p>
         <div class="price-badge">$30 / Meal &nbsp;·&nbsp; Serves 2 &nbsp;·&nbsp; Generous Portions</div>
@@ -85,32 +94,73 @@
             Contact us via <strong>WhatsApp, Text, or Call</strong> to place your order
         </div>
 
+        <!-- Option A -->
+        <div style="text-align:center;margin-bottom:16px;">
+            <span class="meal-option-label">🌯 Option A</span>
+        </div>
         <div class="specials-grid">
-            <!-- Beef Lasagna -->
+            <!-- Chicken Caesar Wraps -->
             <div class="dish-card">
-                <img class="dish-img" src="/beef-lasagna.jpg" alt="Beef Lasagna" />
+                <img class="dish-img" src="/chicken-caesar-wrap.jpg" alt="Chicken Caesar Wraps" />
                 <div class="dish-body">
-                    <div class="dish-name">Beef Lasagna</div>
+                    <div class="dish-name">Chicken Caesar Wraps</div>
                     <div class="dish-desc">
-                        Rich, hearty layers of seasoned beef bolognese, velvety bechamel sauce, and melted cheese — baked to golden perfection. A comforting classic made from scratch with the freshest ingredients.
+                        Tender, juicy grilled chicken tossed in a creamy Caesar dressing, wrapped in a warm tortilla with crisp romaine lettuce, shaved parmesan, and house-made croutons. Fresh, satisfying, and packed with flavour.
                     </div>
                     <span class="dish-tag">Homemade</span>
                     <span class="dish-tag">Serves 2</span>
-                    <span class="dish-tag">Italian</span>
+                    <span class="dish-tag">American</span>
                 </div>
             </div>
 
-            <!-- Garlic Bread -->
+            <!-- Mac and Cheese -->
             <div class="dish-card">
-                <img class="dish-img" src="/garlic-bread.jpg" alt="Garlic Bread" />
+                <img class="dish-img" src="/mac-and-cheese.jpg" alt="Mac and Cheese" />
                 <div class="dish-body">
-                    <div class="dish-name">Garlic Bread</div>
+                    <div class="dish-name">Mac and Cheese</div>
                     <div class="dish-desc">
-                        Crispy, golden baguette generously brushed with garlic butter and fresh herbs — the perfect companion to the lasagna. Warm, fragrant, and impossible to resist.
+                        Ultra-creamy, velvety macaroni smothered in a rich, golden cheese sauce made from scratch — baked to bubbly perfection with a lightly golden top. The ultimate comfort food side dish.
                     </div>
-                    <span class="dish-tag">Freshly Baked</span>
+                    <span class="dish-tag">Homemade</span>
                     <span class="dish-tag">Vegetarian</span>
-                    <span class="dish-tag">Side Dish</span>
+                    <span class="dish-tag">Comfort Food</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- OR divider -->
+        <div class="or-separator">— OR —</div>
+
+        <!-- Option B -->
+        <div style="text-align:center;margin-top:16px;margin-bottom:16px;">
+            <span class="meal-option-label">🍛 Option B</span>
+        </div>
+        <div class="specials-grid">
+            <!-- Chicken Ginger Handi -->
+            <div class="dish-card">
+                <img class="dish-img" src="/chicken-ginger-handi.jpg" alt="Chicken Ginger Handi" />
+                <div class="dish-body">
+                    <div class="dish-name">Chicken Ginger Handi</div>
+                    <div class="dish-desc">
+                        A fragrant, slow-cooked Pakistani classic — tender chicken simmered in a bold, aromatic ginger-forward gravy with hand-ground spices and fresh herbs. Deeply comforting and full of warmth.
+                    </div>
+                    <span class="dish-tag">Homemade</span>
+                    <span class="dish-tag">Serves 2</span>
+                    <span class="dish-tag">Pakistani</span>
+                </div>
+            </div>
+
+            <!-- Tori Sabzi -->
+            <div class="dish-card">
+                <img class="dish-img" src="/tori-sabzi.jpg" alt="Tori Sabzi with Rice" />
+                <div class="dish-body">
+                    <div class="dish-name">Tori Sabzi</div>
+                    <div class="dish-desc">
+                        A light, wholesome Pakistani zucchini curry gently spiced with cumin, coriander, and fresh tomatoes — cooked to a silky, flavourful finish. Served with fluffy steamed basmati rice.
+                    </div>
+                    <span class="dish-tag">Homemade</span>
+                    <span class="dish-tag">Vegetarian</span>
+                    <span class="dish-tag">Served with Rice</span>
                 </div>
             </div>
         </div>
@@ -118,7 +168,7 @@
         <div class="order-section">
             <h2>Ready to Order?</h2>
             <p>Text or WhatsApp us to place your order. We'll confirm your pickup time — usually ready by 5:30 PM.</p>
-            <a class="order-btn" href="https://wa.me/19723135581?text=Hi%20Saira!%20I%27d%20like%20to%20order%20today%27s%20special%20-%20Beef%20Lasagna%20%26%20Garlic%20Bread." target="_blank">📱 WhatsApp / Text Us</a>
+            <a class="order-btn" href="https://wa.me/19723135581?text=Hi%20Saira!%20I%27d%20like%20to%20order%20today%27s%20special." target="_blank">📱 WhatsApp / Text Us</a>
             <a class="order-btn secondary" href="tel:+19723135581">📞 Call Us</a>
         </div>
 
