@@ -103,7 +103,7 @@
         var block = document.createElement('section');
         block.id = 'skc-disclaimer-block';
         block.style.cssText = 'padding:1.5rem 1rem;background:#fffbeb;';
-        block.innerHTML = '<div style="max-width:48rem;margin:0 auto;display:flex;flex-direction:column;gap:0.75rem;"><div style="border-radius:0.75rem;border:1px solid #fde68a;background:#ffffff;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#78350f;"><strong>&#9888;&#65039; Home Kitchen Notice: </strong>This food was prepared in a home kitchen not subject to licensure or inspection and it may contain common food allergens. This food is not meant to be used for resale or purposes other than direct consumer consumption.</div><div style="border-radius:0.75rem;border:1px solid #fde68a;background:#ffffff;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#78350f;"><strong>&#9888;&#65039; Allergen Notice: </strong>Our meals may contain nuts, dairy (milk, yogurt), gluten, eggs, and other common allergens. Please inform us of any food allergies at the time of placing your order. Saira&#39;s Kitchen Corner is not responsible for any allergic reactions if not informed of allergies prior to placing the order.</div><div style="border-radius:0.75rem;border:1px solid #bbf7d0;background:#f0fdf4;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#14532d;"><strong>&#127823; Gluten Free Options Available: </strong>Gluten free options are available for select dishes. Please contact us for details before placing your order.</div></div>';
+        block.innerHTML = '<div style="max-width:48rem;margin:0 auto;display:flex;flex-direction:column;gap:0.75rem;"><div style="border-radius:0.75rem;border:1px solid #fde68a;background:#ffffff;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#78350f;"><strong>&#9888;&#65039; Home Kitchen Notice: </strong>This food was prepared in a home kitchen not subject to licensure or inspection and it may contain common food allergens. This food is not meant to be used for resale or purposes other than direct consumer consumption.</div><div style="border-radius:0.75rem;border:1px solid #fde68a;background:#ffffff;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#78350f;"><strong>&#9888;&#65039; Allergen Notice: </strong>Our meals may contain nuts, dairy (milk, yogurt), gluten, eggs, and other common allergens. Please inform us of any food allergies at the time of placing your order. Saira&#39;s Kitchen Corner is not responsible for any allergic reactions if not informed of allergies prior to placing the order.</div></div>';
         whyChooseSection.insertAdjacentElement('afterend', block);
       }
       var disclaimerInterval = setInterval(function() {
@@ -112,6 +112,41 @@
       }, 300);
       window.addEventListener('popstate', function() { setTimeout(injectDisclaimers, 500); });
       setTimeout(function() { clearInterval(disclaimerInterval); }, 15000);
+
+      // Inject Gluten Free card next to Zabiha Halal card in Why Choose grid
+      function injectGlutenFreeCard() {
+        if (window.location.pathname !== '/' && window.location.pathname !== '') return;
+        if (document.getElementById('skc-gluten-free-card')) return;
+        // Find the Zabiha Halal card by its heading text
+        var h3s = document.querySelectorAll('h3');
+        var zabihaCard = null;
+        for (var i = 0; i < h3s.length; i++) {
+          if (h3s[i].textContent.indexOf('Zabiha Halal') !== -1) {
+            // Walk up to the card container (div)
+            var el = h3s[i];
+            while (el && el.tagName !== 'DIV' && el.parentElement && el.parentElement.tagName !== 'DIV') {
+              el = el.parentElement;
+            }
+            // Go up one more to the card wrapper
+            if (el.parentElement) el = el.parentElement;
+            zabihaCard = el;
+            break;
+          }
+        }
+        if (!zabihaCard) return;
+        // Clone the card's style/classes from Zabiha Halal card
+        var glutenCard = document.createElement('div');
+        glutenCard.id = 'skc-gluten-free-card';
+        glutenCard.className = zabihaCard.className;
+        glutenCard.style.cssText = zabihaCard.style.cssText;
+        glutenCard.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.75rem;padding:1.5rem;"><div style="width:3rem;height:3rem;border-radius:9999px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:1.5rem;">&#127823;</div><h3 style="font-size:1rem;font-weight:600;">Gluten Free Options</h3><p style="font-size:0.875rem;opacity:0.85;">Gluten free options are available for select dishes. Please contact us for details.</p></div>';
+        zabihaCard.insertAdjacentElement('afterend', glutenCard);
+      }
+      var glutenInterval = setInterval(function() {
+        injectGlutenFreeCard();
+        if (document.getElementById('skc-gluten-free-card')) clearInterval(glutenInterval);
+      }, 300);
+      setTimeout(function() { clearInterval(glutenInterval); }, 15000);
     </script>
   </body>
 </html>
