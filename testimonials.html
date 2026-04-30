@@ -241,6 +241,99 @@
             border-radius: 12px;
         }
 
+        /* ── LEAVE A REVIEW FORM ── */
+        .review-form-section {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #e8d5b0;
+            padding: 32px 28px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 12px rgba(92,45,14,0.08);
+        }
+        .review-form-section h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #5c2d0e;
+            margin-bottom: 6px;
+        }
+        .review-form-section .form-subtitle {
+            font-size: 0.92rem;
+            color: #8b6914;
+            margin-bottom: 22px;
+        }
+        .review-form label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #5c2d0e;
+            margin-bottom: 5px;
+            margin-top: 14px;
+        }
+        .review-form input,
+        .review-form textarea,
+        .review-form select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d4b896;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: #3d2b1f;
+            background: #fdf8f0;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .review-form input:focus,
+        .review-form textarea:focus,
+        .review-form select:focus {
+            border-color: #8b4513;
+        }
+        .review-form textarea { resize: vertical; min-height: 110px; }
+        .review-form .star-row {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .review-form .star-row input[type=radio] { display: none; }
+        .review-form .star-row label {
+            font-size: 1.8rem;
+            color: #d4b896;
+            cursor: pointer;
+            margin: 0;
+            transition: color 0.15s;
+        }
+        .review-form .star-row input[type=radio]:checked ~ label,
+        .review-form .star-row label:hover,
+        .review-form .star-row label:hover ~ label { color: #f5c842; }
+        .review-form .star-row { flex-direction: row-reverse; justify-content: flex-end; }
+        .review-form .star-row label:hover,
+        .review-form .star-row label:hover ~ label { color: #f5c842; }
+        .review-submit-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #5c2d0e;
+            color: #f5c842;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 12px 32px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .review-submit-btn:hover { background: #8b4513; }
+        .review-success {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 10px;
+            padding: 16px 20px;
+            color: #166534;
+            font-size: 0.95rem;
+            margin-top: 16px;
+            text-align: center;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 520px) {
             .testimonial-card, .photo-card { padding: 22px 18px 18px; }
@@ -327,6 +420,34 @@
             </div>
         </div>
 
+        <!-- Anonymous - Lasagna review -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                Lasagna was great! I accidentally ate that entire 1lb in the picture. Bread dessert was dry. Garlic bread has a good, toasted, authentic taste — like the sizes of the sliced bread. I'll leave a 5 star tomorrow about the lasagna!
+            </p>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">Happy Customer</div>
+                    <div class="testimonial-source">via iMessage</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- Amanda - Lasagna review -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                Saira! So good! We ate one whole pan! And all the bread. Mike really liked it and he's from Jersey where they're picky. Thank you for easy dinner tonight.
+            </p>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-name">Amanda</div>
+                    <div class="testimonial-source">via iMessage</div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+            </div>
+        </div>
+
         <!-- Crystal - with food photos -->
         <div class="photo-card">
             <p class="testimonial-text">
@@ -357,6 +478,36 @@
             </div>
         </div>
 
+        <!-- LEAVE A REVIEW -->
+        <div class="review-form-section">
+            <h2>⭐ Leave a Review</h2>
+            <p class="form-subtitle">Loved your meal? We'd love to hear from you!</p>
+            <form class="review-form" id="reviewForm" onsubmit="submitReview(event)">
+                <label for="rev-name">Your Name</label>
+                <input type="text" id="rev-name" placeholder="e.g. Sarah M." required />
+
+                <label>Rating</label>
+                <div class="star-row">
+                    <input type="radio" id="s5" name="rating" value="5" required /><label for="s5">★</label>
+                    <input type="radio" id="s4" name="rating" value="4" /><label for="s4">★</label>
+                    <input type="radio" id="s3" name="rating" value="3" /><label for="s3">★</label>
+                    <input type="radio" id="s2" name="rating" value="2" /><label for="s2">★</label>
+                    <input type="radio" id="s1" name="rating" value="1" /><label for="s1">★</label>
+                </div>
+
+                <label for="rev-dish">Dish / Meal Ordered</label>
+                <input type="text" id="rev-dish" placeholder="e.g. Chicken Karahi, Lasagna…" />
+
+                <label for="rev-text">Your Review</label>
+                <textarea id="rev-text" placeholder="Tell us what you thought…" required></textarea>
+
+                <button type="submit" class="review-submit-btn">Submit Review</button>
+            </form>
+            <div class="review-success" id="reviewSuccess">
+                🎉 Thank you for your review! We truly appreciate your feedback.
+            </div>
+        </div>
+
         <!-- ORDER CTA -->
         <div class="order-section">
             <h2>Ready to Try It Yourself?</h2>
@@ -369,5 +520,12 @@
 
 
     <div style="background:#fff8e1;border:1px solid #f59e0b;border-radius:10px;padding:14px 18px;margin:20px;font-size:0.88rem;color:#78350f;text-align:center;"><strong>⚠️ Home Kitchen Notice:</strong> This food was prepared in a home kitchen not subject to licensure or inspection and it may contain common food allergens. This food is not meant to be used for resale or purposes other than direct consumer consumption.</div>
+    <script>
+    function submitReview(e) {
+        e.preventDefault();
+        document.getElementById('reviewForm').style.display = 'none';
+        document.getElementById('reviewSuccess').style.display = 'block';
+    }
+    </script>
 </body>
 </html>
