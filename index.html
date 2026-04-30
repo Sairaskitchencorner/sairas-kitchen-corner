@@ -81,6 +81,37 @@
       setTimeout(() => {
         clearInterval(menuInterceptor);
       }, 10000);
+
+      // Inject disclaimers below "Why Choose Us" section on homepage only
+      function injectDisclaimers() {
+        if (window.location.pathname !== '/' && window.location.pathname !== '') return;
+        if (document.getElementById('skc-disclaimer-block')) return;
+        var headings = document.querySelectorAll('h2, h3');
+        var whyChooseSection = null;
+        for (var i = 0; i < headings.length; i++) {
+          var h = headings[i];
+          if (h.textContent.indexOf('Why Choose Saira') !== -1) {
+            var el = h;
+            while (el && el.tagName !== 'SECTION' && el.tagName !== 'BODY') {
+              el = el.parentElement;
+            }
+            if (el && el.tagName === 'SECTION') whyChooseSection = el;
+            break;
+          }
+        }
+        if (!whyChooseSection) return;
+        var block = document.createElement('section');
+        block.id = 'skc-disclaimer-block';
+        block.style.cssText = 'padding:1.5rem 1rem;background:#fffbeb;';
+        block.innerHTML = '<div style="max-width:48rem;margin:0 auto;display:flex;flex-direction:column;gap:0.75rem;"><div style="border-radius:0.75rem;border:1px solid #fde68a;background:#ffffff;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#78350f;"><strong>&#9888;&#65039; Home Kitchen Notice: </strong>This food was prepared in a home kitchen not subject to licensure or inspection and it may contain common food allergens. This food is not meant to be used for resale or purposes other than direct consumer consumption.</div><div style="border-radius:0.75rem;border:1px solid #fde68a;background:#ffffff;padding:1rem 1.5rem;font-size:0.875rem;line-height:1.6;color:#78350f;"><strong>&#9888;&#65039; Allergen Notice: </strong>Our meals may contain nuts, dairy (milk, yogurt), gluten, eggs, and other common allergens. Please inform us of any food allergies at the time of placing your order. Saira&#39;s Kitchen Corner is not responsible for any allergic reactions if not informed of allergies prior to placing the order.</div></div>';
+        whyChooseSection.insertAdjacentElement('afterend', block);
+      }
+      var disclaimerInterval = setInterval(function() {
+        injectDisclaimers();
+        if (document.getElementById('skc-disclaimer-block')) clearInterval(disclaimerInterval);
+      }, 300);
+      window.addEventListener('popstate', function() { setTimeout(injectDisclaimers, 500); });
+      setTimeout(function() { clearInterval(disclaimerInterval); }, 15000);
     </script>
   </body>
 </html>
